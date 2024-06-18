@@ -1,0 +1,395 @@
+variables:
+  - &spacing_outside "8px"
+  - &spacing_bottom "-8px"
+  - &spacing_between "4px"
+  - &bar_height "40px"
+  - &border_radius "8px"
+  - &font_size_big "12px"
+  - &font_size_small "11px"
+
+  - &col_bg "#1C1E26"
+  - &col_fg "#B6C4F2"
+  - &col_active "#C678DD"
+  - &col_active_secondary "#D19A66"
+  - &col_border "#66666688"
+
+
+general:
+  focus_follows_cursor: false
+  cursor_follows_focus: false
+  toggle_workspace_on_refocus: true
+  show_floating_on_top: true
+  floating_window_move_amount: "5%"
+  center_new_floating_windows: true
+  window_animations: "unchanged"
+
+gaps:
+  outer_gap: *spacing_outside
+  inner_gap: *spacing_between
+
+focus_borders:
+  active:
+    enabled: true
+    color: *col_active
+
+
+bar:
+  enabled: true
+  height: *bar_height
+  position: "bottom"
+  opacity: 1.0
+  background: *col_bg
+  foreground: *col_fg
+  font_family: "RecursiaMDSNF"
+  font_size: *font_size_big
+  padding: "7px 0px 7px 6px"
+  offset_x: *spacing_outside
+  offset_y: *spacing_bottom
+  border_radius: *border_radius
+  border_width: "1px 1px 1px 1px"
+  border_color: *col_border
+
+  components_left:
+    - type: "workspaces"
+
+      focused_workspace_background: *col_active
+      focused_workspace_foreground: *col_bg
+
+      displayed_workspace_background: *col_active_secondary
+      displayed_workspace_foreground: *col_bg
+
+      default_workspace_background: "transparent"
+      default_workspace_foreground: *col_fg
+
+  components_center:
+    - type: "window title"
+
+    - type: "tiling direction"
+      label_horizontal: ""
+      label_vertical:   "VERTICAL   "
+      font_size: *font_size_small
+
+    - type: "music"
+      label_not_playing: " "
+      label_paused:  ""
+      label_playing: "󰎇 {song_title} - {artist_name}   "
+      max_title_length: 22
+      max_artist_length: 13
+      font_size: *font_size_small
+
+    - type: "volume"
+      label_low:    " {volume_level}%   "
+      label_medium: " {volume_level}%   "
+      label_high:   " {volume_level}%   "
+      label_mute:                " 0%   "
+      font_size: *font_size_small
+
+    - type: "clock"
+      time_formatting: "yyyy-MM-dd HH:mm    "
+
+
+workspaces:
+  # Left
+  - name: "l1"
+    bind_to_monitor: 2
+    display_name: "L1"
+
+  - name: "l2"
+    bind_to_monitor: 2
+    display_name: "L2"
+
+  - name: "l3"
+    bind_to_monitor: 2
+    display_name: "L3"
+
+  - name: "l4"
+    bind_to_monitor: 2
+    display_name: "L4"
+
+  - name: "l5"
+    bind_to_monitor: 2
+    display_name: "L5"
+
+  - name: "l6"
+    bind_to_monitor: 2
+    display_name: "L6"
+
+  - name: "l7"
+    bind_to_monitor: 2
+    display_name: "L7"
+
+  - name: "l8"
+    bind_to_monitor: 2
+    display_name: "L8"
+
+  - name: "l9"
+    bind_to_monitor: 2
+    display_name: "L9"
+
+  # Main
+  - name: "m1"
+    bind_to_monitor: 1
+    display_name: "M1"
+
+  - name: "m2"
+    bind_to_monitor: 1
+    display_name: "M2"
+
+  - name: "m3"
+    bind_to_monitor: 1
+    display_name: "M3"
+
+  - name: "m4"
+    bind_to_monitor: 1
+    display_name: "M4"
+
+  - name: "m5"
+    bind_to_monitor: 1
+    display_name: "M5"
+
+  - name: "m6"
+    bind_to_monitor: 1
+    display_name: "M6"
+
+  - name: "m7"
+    bind_to_monitor: 1
+    display_name: "M7"
+
+  - name: "m8"
+    bind_to_monitor: 1
+    display_name: "M8"
+
+  - name: "m9"
+    bind_to_monitor: 1
+    display_name: "M9"
+
+
+window_rules:
+  - command: "ignore"
+    match_process_name: "/Taskmgr|ScreenClippingHost/"
+
+  - command: "set floating"
+    match_class_name: "#32770"
+
+  - command: "ignore"
+    match_title: "[Pp]icture.in.[Pp]icture"
+    match_class_name: "Chrome_WidgetWin_1|MozillaDialogClass"
+
+  - command: "resize borders 0px -7px -7px -7px"
+    match_process_name: "steam"
+
+  # Left presets
+  - command: "Move to workspace l1"
+    match_process_name: "Arc"
+
+  - command: "Move to workspace l2"
+    match_process_name: "Vesktop"
+
+  - command: "Move to workspace l3"
+    match_process_name: "thunderbird"
+
+  - command: "Move to workspace l4"
+    match_title: "/YouTube Music.*/"
+
+  - command: "Move to workspace l5"
+    match_title: "/OBS.*/"
+
+  # Main presets
+  - command: "Move to workspace M9"
+    match_title: "GoController"
+
+
+binding_modes:
+  - name: "resize"
+    keybindings:
+      # Resize focused window by a percentage or pixel amount.
+      - command: "resize width -2%"
+        bindings: ["H", "Left"]
+      - command: "resize width +2%"
+        bindings: ["L", "Right"]
+      - command: "resize height +2%"
+        bindings: ["K", "Up"]
+      - command: "resize height -2%"
+        bindings: ["J", "Down"]
+      # Press enter/escape to return to default keybindings.
+      - command: "binding mode none"
+        bindings: ["Escape", "Enter"]
+
+
+keybindings:
+  # Shift focus in a given direction.
+  - command: "focus left"
+    bindings: ["Alt+H", "Alt+Left"]
+  - command: "focus right"
+    bindings: ["Alt+L", "Alt+Right"]
+  - command: "focus up"
+    bindings: ["Alt+K", "Alt+Up"]
+  - command: "focus down"
+    bindings: ["Alt+J", "Alt+Down"]
+
+  # Move focused window in a given direction.
+  - command: "move left"
+    bindings: ["Alt+Shift+H", "Alt+Shift+Left"]
+  - command: "move right"
+    bindings: ["Alt+Shift+L", "Alt+Shift+Right"]
+  - command: "move up"
+    bindings: ["Alt+Shift+K", "Alt+Shift+Up"]
+  - command: "move down"
+    bindings: ["Alt+Shift+J", "Alt+Shift+Down"]
+
+  # Resize focused window by a percentage or pixel amount.
+  - command: "resize width -2%"
+    binding: "Alt+U"
+  - command: "resize width +2%"
+    binding: "Alt+P"
+  - command: "resize height +2%"
+    binding: "Alt+O"
+  - command: "resize height -2%"
+    binding: "Alt+I"
+
+  # As an alternative to the resize keybindings above, resize mode enables resizing via
+  # HJKL or arrow keys. The binding mode is defined above with the name "resize".
+  - command: "binding mode resize"
+    binding: "Alt+Shift+Ctrl+R"
+
+  # Change tiling direction. This determines where new tiling windows will be inserted.
+  - command: "tiling direction toggle"
+    binding: "Alt+Shift+V"
+
+  # Change focus between floating / tiling windows.
+  - command: "focus mode toggle"
+    binding: "Alt+Shift+Space"
+
+  # Change the focused window to be floating / tiling.
+  - command: "toggle floating"
+    binding: "Alt+Shift+Ctrl+Space"
+
+  # Change the focused window to be maximized / unmaximized.
+  - command: "toggle maximized"
+    binding: "Alt+Shift+X"
+
+  # Minimize focused window.
+  - command: "set minimized"
+    binding: "Alt+Shift+M"
+
+  # Close focused window.
+  - command: "close"
+    binding: "Alt+Shift+Q"
+
+  # Kill GlazeWM process safely.
+  - command: "exit wm"
+    binding: "Alt+Shift+E"
+
+  # Re-evaluate configuration file.
+  - command: "reload config"
+    binding: "Alt+Shift+R"
+
+  # Launch CMD terminal (alternatively `exec wt` or `exec %ProgramFiles%/Git/git-bash.exe`
+  # to start Windows Terminal and Git Bash respectively.
+  - command: "exec wt"
+    binding: "Alt+Shift+Enter"
+
+  - command: "exec pwsh"
+    binding: "Alt+Ctrl+Enter"
+
+  # Focus the workspace that last had focus.
+  - command: "focus workspace recent"
+    binding: "Alt+Y"
+
+  # Focus the next/previous workspace defined in `workspaces` config.
+  - command: "focus workspace next"
+    binding: "Alt+T"
+  - command: "focus workspace prev"
+    binding: "Alt+Shift+T"
+
+  # Change focus to a workspace defined in `workspaces` config.
+  # Left
+  - command: "focus workspace l1"
+    binding: "RControlKey+1"
+  - command: "focus workspace l2"
+    binding: "RControlKey+2"
+  - command: "focus workspace l3"
+    binding: "RControlKey+3"
+  - command: "focus workspace l4"
+    binding: "RControlKey+4"
+  - command: "focus workspace l5"
+    binding: "RControlKey+5"
+  - command: "focus workspace l6"
+    binding: "RControlKey+6"
+  - command: "focus workspace l7"
+    binding: "RControlKey+7"
+  - command: "focus workspace l8"
+    binding: "RControlKey+8"
+  - command: "focus workspace l9"
+    binding: "RControlKey+9"
+
+  # Main
+  - command: "focus workspace m1"
+    binding: "Alt+1"
+  - command: "focus workspace m2"
+    binding: "Alt+2"
+  - command: "focus workspace m3"
+    binding: "Alt+3"
+  - command: "focus workspace m4"
+    binding: "Alt+4"
+  - command: "focus workspace m5"
+    binding: "Alt+5"
+  - command: "focus workspace m6"
+    binding: "Alt+6"
+  - command: "focus workspace m7"
+    binding: "Alt+7"
+  - command: "focus workspace m8"
+    binding: "Alt+8"
+  - command: "focus workspace m9"
+    binding: "Alt+9"
+
+  # Move focused workspace to a monitor in a given direction.
+  - command: "move workspace left"
+    binding: "Alt+A"
+  - command: "move workspace right"
+    binding: "Alt+F"
+  - command: "move workspace up"
+    binding: "Alt+D"
+  - command: "move workspace down"
+    binding: "Alt+S"
+
+  # Move focused window to a workspace defined in `workspaces` config.
+  # Left
+  - commands: ["move to workspace l1", "focus workspace l1"]
+    binding: "RControlKey+Shift+1"
+  - commands: ["move to workspace l2", "focus workspace l2"]
+    binding: "RControlKey+Shift+2"
+  - commands: ["move to workspace l3", "focus workspace l3"]
+    binding: "RControlKey+Shift+3"
+  - commands: ["move to workspace l4", "focus workspace l4"]
+    binding: "RControlKey+Shift+4"
+  - commands: ["move to workspace l5", "focus workspace l5"]
+    binding: "RControlKey+Shift+5"
+  - commands: ["move to workspace l6", "focus workspace l6"]
+    binding: "RControlKey+Shift+6"
+  - commands: ["move to workspace l7", "focus workspace l7"]
+    binding: "RControlKey+Shift+7"
+  - commands: ["move to workspace l8", "focus workspace l8"]
+    binding: "RControlKey+Shift+8"
+  - commands: ["move to workspace l9", "focus workspace l9"]
+    bindings: ["RControlKey+Shift+9"]
+
+  # Main
+  - commands: ["move to workspace m1", "focus workspace m1"]
+    binding: "Alt+Shift+1"
+  - commands: ["move to workspace m2", "focus workspace m2"]
+    binding: "Alt+Shift+2"
+  - commands: ["move to workspace m3", "focus workspace m3"]
+    binding: "Alt+Shift+3"
+  - commands: ["move to workspace m4", "focus workspace m4"]
+    binding: "Alt+Shift+4"
+  - commands: ["move to workspace m5", "focus workspace m5"]
+    binding: "Alt+Shift+5"
+  - commands: ["move to workspace m6", "focus workspace m6"]
+    binding: "Alt+Shift+6"
+  - commands: ["move to workspace m7", "focus workspace m7"]
+    binding: "Alt+Shift+7"
+  - commands: ["move to workspace m8", "focus workspace m8"]
+    binding: "Alt+Shift+8"
+  - commands: ["move to workspace m9", "focus workspace m9"]
+    bindings: ["Alt+Shift+9"]
