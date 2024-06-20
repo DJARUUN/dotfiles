@@ -1,7 +1,7 @@
 variables:
   - &spacing_outside "8px"
   - &spacing_bottom "-8px"
-  - &spacing_between "4px"
+  - &spacing_between "6px"
   - &bar_height "40px"
   - &border_radius "8px"
   - &font_size_big "12px"
@@ -284,14 +284,6 @@ keybindings:
   # Re-evaluate configuration file.
   - command: "reload config"
     binding: "Alt+Shift+R"
-
-  # Launch CMD terminal (alternatively `exec wt` or `exec %ProgramFiles%/Git/git-bash.exe`
-  # to start Windows Terminal and Git Bash respectively.
-  - command: "exec wt"
-    binding: "Alt+Shift+Enter"
-
-  - command: "exec pwsh"
-    binding: "Alt+Ctrl+Enter"
 
   # Focus the workspace that last had focus.
   - command: "focus workspace recent"
