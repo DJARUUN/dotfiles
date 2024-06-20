@@ -11,6 +11,7 @@ local col_inactive_fg = "#8b93b0"
 -- Config table --
 local config = {
 	-- Shell --
+	default_domain = "WSL:Debian",
 	default_prog = { "pwsh.exe" },
 	default_cwd = home,
 
