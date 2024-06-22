@@ -6,13 +6,13 @@ local fortnitelog = now.hour .. ":" .. now.min .. ":" .. now.sec
 local function update_hl(group, tbl)
 	local old_hl = vim.api.nvim_get_hl_by_name(group, true)
 	local new_hl = vim.tbl_extend("force", old_hl, tbl)
-	fortnitelog = fortnitelog
-		.. "\n\n--- "
-		.. group
-		.. " ---\nOLD: "
-		.. vim.inspect(old_hl)
-		.. "\nNEW: "
-		.. vim.inspect(new_hl)
+	-- fortnitelog = fortnitelog
+	-- 	.. "\n\n--- "
+	-- 	.. group
+	-- 	.. " ---\nOLD: "
+	-- 	.. vim.inspect(old_hl)
+	-- 	.. "\nNEW: "
+	-- 	.. vim.inspect(new_hl)
 	vim.api.nvim_set_hl(0, group, new_hl)
 end
 
@@ -37,9 +37,9 @@ function Fix_syntax_hl()
 	update_hl("@type.builtin", { italic = true })
 	update_hl("StorageClass", { italic = true })
 
-	local logfile = io.open("fortnite.log", "w")
-	logfile:write(fortnitelog)
-	logfile:close()
+	-- local logfile = io.open("fortnite.log", "w")
+	-- logfile:write(fortnitelog)
+	-- logfile:close()
 end
 
 -- other stuff that works anyways apparently
