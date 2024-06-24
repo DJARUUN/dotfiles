@@ -43,6 +43,12 @@ vim.o.foldenable = true
 vim.g.loaded_node_provider = 0
 vim.g.loaded_perl_provider = 0
 
+-- global helper functions
+function exec_pwsh_cmd(cmd)
+	local cmd_concat = table.concat(cmd, "; ")
+	os.execute([[pwsh -c "]] .. cmd_concat .. [["]])
+end
+
 -- requiring
 require("config.lazy")
 require("config.autocmds").run()
