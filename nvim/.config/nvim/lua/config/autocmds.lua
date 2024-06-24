@@ -82,6 +82,24 @@ function M.run()
 
 	-- mini starter
 	vim.api.nvim_create_autocmd("User", { command = "highlight! link MiniStarterFooter MiniStarterInactive" })
+
+	-- lsp diagnostics
+	vim.api.nvim_create_autocmd(
+		"User",
+		{ command = "highlight! link DiagnosticVirtualTextError LspDiagnosticsSignError" }
+	)
+	vim.api.nvim_create_autocmd(
+		"User",
+		{ command = "highlight! link DiagnosticVirtualTextWarn LspDiagnosticsSignWarning" }
+	)
+	vim.api.nvim_create_autocmd(
+		"User",
+		{ command = "highlight! link DiagnosticVirtualTextHint LspDiagnosticsSignHint" }
+	)
+	vim.api.nvim_create_autocmd(
+		"User",
+		{ command = "highlight! link DiagnosticVirtualTextInfo LspDiagnosticsSignInformation" }
+	)
 end
 
 return M
