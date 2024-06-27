@@ -1,5 +1,5 @@
 [shell]
-program = "pwsh"
+program = "wsl.exe --cd ~"
 
 [window]
 dimensions = { columns = 110, lines = 29 }
@@ -11,7 +11,7 @@ normal = { family = "RecursiaMDSNF" }
 bold = { family = "RecursiaMDSNF" }
 italic = { family = "RecursiaMDSNF" }
 bold_italic = { family = "RecursiaMDSNF" }
-size = 10.5
+size = 10
 
 [cursor]
 style = {shape = "Block", blinking = "Always"}
@@ -21,7 +21,8 @@ hide_when_typing = true
 
 [keyboard]
 bindings = [
-  { key = "V", mods = "Alt|Shift", action = "ToggleViMode" }
+  { key = "N", mods = "Control", chars = "cls; wsl.exe --cd ~\r\n" },
+  { key = "N", mods = "Control|Shift", chars = "clear; pwsh.exe -NoProfileLoadTime -NoLogo -WorkingDirectory C:/Users/caarg\n" }
 ]
 
 [colors.primary]
