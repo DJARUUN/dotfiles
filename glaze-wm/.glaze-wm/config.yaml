@@ -169,6 +169,9 @@ window_rules:
   - command: "ignore"
     match_process_name: "/Taskmgr|ScreenClippingHost/"
 
+  - command: "ignore"
+    match_title: "Stardew Valley"
+
   - command: "set floating"
     match_class_name: "#32770"
 
