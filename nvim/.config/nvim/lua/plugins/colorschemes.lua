@@ -2,12 +2,7 @@ return {
 	"yashguptaz/calvera-dark.nvim",
 	"olivercederborg/poimandres.nvim",
 	"https://gitlab.com/wmwnuk/kyotonight-vim",
-	{
-		"sainnhe/everforest",
-		config = function()
-			vim.g.everforest_background = "hard"
-		end,
-	},
+	"https://gitlab.com/djaruun/nightfall-dimmed.nvim",
 	{
 		"navarasu/onedark.nvim",
 		config = function()
