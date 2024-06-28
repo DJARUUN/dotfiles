@@ -20,7 +20,7 @@ function M.run()
 	vim.api.nvim_create_autocmd("User", { command = "highlight! Foreground guifg=#2e383c" })
 
 	-- color scheme
-	vim.api.nvim_create_autocmd("VimEnter", { command = "colorscheme everforest" })
+	vim.api.nvim_create_autocmd("VimEnter", { command = "colorscheme nightfall_dimmed" })
 	vim.api.nvim_create_autocmd({ "VimEnter", "ColorScheme" }, { command = "lua Fix_syntax_hl()" })
 	vim.api.nvim_create_autocmd("User", { command = "highlight! link Normal @property" })
 	vim.api.nvim_create_autocmd("User", { command = "highlight! link NormalNC @property" })
