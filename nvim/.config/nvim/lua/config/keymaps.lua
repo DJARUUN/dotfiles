@@ -36,14 +36,6 @@ function M.run()
 	vim.keymap.set("n", "<tab>", ":bnext<CR>", { desc = "Next buffer" })
 	vim.keymap.set("n", "<s-tab>", ":bprevious<CR>", { desc = "Previous buffer" })
 
-	vim.keymap.set("n", "<leader>cmr", ":CMakeRun<CR>", { desc = "Run project" })
-	vim.keymap.set("n", "<leader>cmR", ":CMakeRunCurrentFile<CR>", { desc = "Run current file" })
-	vim.keymap.set("n", "<leader>cmb", ":CMakeBuild<CR>", { desc = "Build project" })
-	vim.keymap.set("n", "<leader>cmB", ":CMakeBuildCurrentFile<CR>", { desc = "Build current file" })
-	vim.keymap.set("n", "<leader>cms", ":CMakeSettings<CR>", { desc = "Open general settings" })
-	vim.keymap.set("n", "<leader>cmS", ":CMakeTargetSettings<CR>", { desc = "Open target specific settings" })
-	vim.keymap.set("n", "<leader>cmt", ":CMakeSelectBuildType<CR>", { desc = "Select build type" })
-	vim.keymap.set("n", "<leader>cmT", ":CMakeSelectBuildTarget<CR>", { desc = "Select build target" })
 	vim.keymap.set("v", "Y", '"+y:lua print("Yanked to system clipboard")<CR>', { desc = "Yank to global clipboard" })
 	vim.keymap.set(
 		{ "n", "v" },
