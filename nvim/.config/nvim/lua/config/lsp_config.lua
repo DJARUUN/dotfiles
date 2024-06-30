@@ -14,10 +14,6 @@ function M.run()
 		single_file_support = true,
 	})
 
-	lspconfig.zls.setup({})
-
-	lspconfig.ols.setup({})
-
 	if package.config:sub(1, 1) == "/" then
 		lspconfig.phpactor.setup({
 			on_attach = function(_)
@@ -48,8 +44,6 @@ function M.run()
 		root_dir = root_pattern("svelte.config.js"),
 	})
 
-	lspconfig.pyright.setup({})
-
 	lspconfig.zls.setup({
 		root_dir = root_pattern("src"),
 	})
@@ -78,7 +72,6 @@ function M.run()
 			"blade",
 			"matcha",
 			"templ",
-			-- "elixir",
 			"eelixir",
 			"heex",
 		},
@@ -96,46 +89,33 @@ function M.run()
 		single_file_support = true,
 	})
 
-	-- lspconfig.tailwindcss.setup({
-	-- 	filetypes = {
-	-- 		"html",
-	-- 		-- "elixir",
-	-- 		-- "eelixir",
-	-- 		-- "heex",
-	-- 		"svelte",
-	-- 		"php",
-	-- 		"twig",
-	-- 	},
-	-- 	init_options = {
-	-- 		userLanguages = {
-	-- 			-- elixir = "html-eex",
-	-- 			-- eelixir = "html-eex",
-	-- 			-- heex = "html-eex",
-	-- 			svelte = "svelte",
-	-- 			php = "php",
-	-- 			twig = "twig",
-	-- 		},
-	-- 	},
-	-- 	settings = {
-	-- 		tailwindCSS = {
-	-- 			lint = {
-	-- 				cssConflict = "warning",
-	-- 				invalidApply = "error",
-	-- 				invalidConfigPath = "error",
-	-- 				invalidScreen = "error",
-	-- 				invalidTailwindDirective = "error",
-	-- 				invalidVariant = "error",
-	-- 				recommendedVariantOrder = "warning",
-	-- 			},
-	-- 			validate = true,
-	-- 			experimental = {
-	-- 				classRegex = {
-	-- 					'class[:]\\s*"([^"]*)"',
-	-- 				},
-	-- 			},
-	-- 		},
-	-- 	},
-	-- })
+	lspconfig.tailwindcss.setup({
+		filetypes = {
+			"html",
+			"svelte",
+			"php",
+			"twig",
+		},
+		settings = {
+			tailwindCSS = {
+				lint = {
+					cssConflict = "warning",
+					invalidApply = "error",
+					invalidConfigPath = "error",
+					invalidScreen = "error",
+					invalidTailwindDirective = "error",
+					invalidVariant = "error",
+					recommendedVariantOrder = "warning",
+				},
+				validate = true,
+				experimental = {
+					classRegex = {
+						'class[:]\\s*"([^"]*)"',
+					},
+				},
+			},
+		},
+	})
 
 	lspconfig.templ.setup({})
 
