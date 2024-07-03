@@ -172,6 +172,9 @@ window_rules:
   - command: "ignore"
     match_title: "Stardew Valley"
 
+  - command "ignore"
+    match_title: "FL Studio 2024"
+
   - command: "set floating"
     match_class_name: "#32770"
 
