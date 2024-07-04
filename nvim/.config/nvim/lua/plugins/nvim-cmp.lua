@@ -33,10 +33,10 @@ return {
 			},
 		},
 		"saadparwaiz1/cmp_luasnip",
-
 		"hrsh7th/cmp-nvim-lsp",
 		"hrsh7th/cmp-path",
 		"kdheepak/cmp-latex-symbols",
+		"hrsh7th/cmp-nvim-lsp-signature-help",
 	},
 	config = function()
 		local cmp = require("cmp")
@@ -100,16 +100,20 @@ return {
 				end, { "i", "s" }),
 			},
 
-			sources = {
+			sources = cmp.config.sources({
 				{ name = "nvim_lsp" },
+				{ name = "nvim_lsp_signature_help" },
 				{ name = "luasnip" },
 				{ name = "buffer" },
 				{ name = "nvim_lua" },
 				{ name = "path" },
-				{ name = "latex_symbols", option = {
-					strategy = 0,
-				} },
-			},
+				{
+					name = "latex_symbols",
+					option = {
+						strategy = 0,
+					},
+				},
+			}),
 		})
 	end,
 }

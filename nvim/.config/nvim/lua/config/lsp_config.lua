@@ -52,6 +52,7 @@ function M.run()
 		cmd = { "/home/caarg/.local/share/nvim/mason/packages/elixir-ls/language_server.sh" },
 		filetypes = { "elixir", "eelixir", "heex", "surface" },
 		single_file_support = true,
+		root_dir = root_pattern(".git", "mix.exs", "gleam.toml", "rebar.config"),
 	})
 
 	lspconfig.emmet_language_server.setup({
@@ -89,33 +90,33 @@ function M.run()
 		single_file_support = true,
 	})
 
-	lspconfig.tailwindcss.setup({
-		filetypes = {
-			"html",
-			"svelte",
-			"php",
-			"twig",
-		},
-		settings = {
-			tailwindCSS = {
-				lint = {
-					cssConflict = "warning",
-					invalidApply = "error",
-					invalidConfigPath = "error",
-					invalidScreen = "error",
-					invalidTailwindDirective = "error",
-					invalidVariant = "error",
-					recommendedVariantOrder = "warning",
-				},
-				validate = true,
-				experimental = {
-					classRegex = {
-						'class[:]\\s*"([^"]*)"',
-					},
-				},
-			},
-		},
-	})
+	-- lspconfig.tailwindcss.setup({
+	-- 	filetypes = {
+	-- 		"html",
+	-- 		"svelte",
+	-- 		"php",
+	-- 		"twig",
+	-- 	},
+	-- 	settings = {
+	-- 		tailwindCSS = {
+	-- 			lint = {
+	-- 				cssConflict = "warning",
+	-- 				invalidApply = "error",
+	-- 				invalidConfigPath = "error",
+	-- 				invalidScreen = "error",
+	-- 				invalidTailwindDirective = "error",
+	-- 				invalidVariant = "error",
+	-- 				recommendedVariantOrder = "warning",
+	-- 			},
+	-- 			validate = true,
+	-- 			experimental = {
+	-- 				classRegex = {
+	-- 					'class[:]\\s*"([^"]*)"',
+	-- 				},
+	-- 			},
+	-- 		},
+	-- 	},
+	-- })
 
 	lspconfig.templ.setup({})
 
