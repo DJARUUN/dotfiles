@@ -1,5 +1,6 @@
 return {
 	"windwp/nvim-ts-autotag",
+	event = "BufEnter",
 	config = function()
 		require("nvim-ts-autotag").setup({
 			filetypes = {

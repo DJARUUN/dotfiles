@@ -182,7 +182,7 @@ window_rules:
     match_title: "[Pp]icture.in.[Pp]icture"
     match_class_name: "Chrome_WidgetWin_1|MozillaDialogClass"
 
-  - command: "resize borders 0px -7px -7px -7px"
+  - command: "ignore"
     match_process_name: "steam"
 
   # Left presets

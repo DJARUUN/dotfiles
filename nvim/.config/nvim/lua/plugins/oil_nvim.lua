@@ -9,7 +9,7 @@ return {
 				"mtime",
 			},
 			buf_options = {
-				buflisted = true,
+				buflisted = false,
 				bufhidden = "hide",
 			},
 			win_options = {

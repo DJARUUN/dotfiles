@@ -1,5 +1,6 @@
 return {
 	"cappyzawa/trim.nvim",
+	event = "VeryLazy",
 	config = function()
 		require("trim").setup({
 			trim_on_write = true,
