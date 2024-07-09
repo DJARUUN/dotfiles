@@ -42,9 +42,4 @@ function Fix_syntax_hl()
 	-- logfile:close()
 end
 
--- other stuff that works anyways apparently
-function M.run()
-	-- update_hl("@ibl.scope.underline.1", { underline = false })
-end
-
 return M

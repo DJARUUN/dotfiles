@@ -51,8 +51,8 @@ end
 
 -- requiring
 require("config.lazy")
-require("config.autocmds").run()
-require("config.lsp_config").run()
-require("config.keymaps").run()
-require("config.hl_groups").run()
+require("config.autocmds")
+require("config.lsp_config")
+require("config.keymaps")
+require("config.hl_groups")
 require("luasnip.loaders.from_lua").load({ paths = { "./lua/config/snippets" } })
