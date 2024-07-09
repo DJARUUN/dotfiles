@@ -3,6 +3,7 @@ return {
 	config = function()
 		require("hardline").setup({
 			bufferline = true,
+			bufferline_settings = {},
 			sections = {
 				"[",
 				{ class = "mode", item = require("hardline.parts.mode").get_item },
