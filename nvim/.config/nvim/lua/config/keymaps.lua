@@ -45,4 +45,9 @@ vim.keymap.set(
 
 vim.keymap.set("n", "<leader>st", ":MC<CR>", { desc = "Search Tasks" })
 
+vim.keymap.set("n", "<leader><left>", ":wincmd h<cr>", { desc = "Move left", silent = true })
+vim.keymap.set("n", "<leader><right>", ":wincmd l<cr>", { desc = "Move right", silent = true })
+vim.keymap.set("n", "<leader><up>", ":wincmd j<cr>", { desc = "Move up", silent = true })
+vim.keymap.set("n", "<leader><down>", ":wincmd k<cr>", { desc = "Move down", silent = true })
+
 return M
