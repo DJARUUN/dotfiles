@@ -1,5 +1,3 @@
-local M = {}
-
 require("mason").setup()
 require("mason-lspconfig").setup({})
 
@@ -15,6 +13,7 @@ lspconfig.gopls.setup({
 
 if package.config:sub(1, 1) == "/" then
 	lspconfig.phpactor.setup({
+		root_dir = root_pattern("*"),
 		on_attach = function(_)
 			vim.cmd([[autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync(nil, 1000)]])
 		end,
@@ -122,5 +121,3 @@ lspconfig.templ.setup({})
 lspconfig.htmx.setup({
 	filetypes = { "html", "templ" },
 })
-
-return M

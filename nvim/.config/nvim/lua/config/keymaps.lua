@@ -1,5 +1,3 @@
-local M = {}
-
 vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous Diagnostic message" })
 vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next Diagnostic message" })
 vim.keymap.set("n", "<leader>ce", vim.diagnostic.open_float, { desc = "Show diagnostic Error messages" })
@@ -43,11 +41,10 @@ vim.keymap.set(
 	{ desc = "Paste from global clipboard" }
 )
 
-vim.keymap.set("n", "<leader>st", ":MC<CR>", { desc = "Search Tasks" })
-
 vim.keymap.set("n", "<leader><left>", ":wincmd h<cr>", { desc = "Move left", silent = true })
+vim.keymap.set("n", "<leader><down>", ":wincmd j<cr>", { desc = "Move down", silent = true })
+vim.keymap.set("n", "<leader><up>", ":wincmd k<cr>", { desc = "Move up", silent = true })
 vim.keymap.set("n", "<leader><right>", ":wincmd l<cr>", { desc = "Move right", silent = true })
-vim.keymap.set("n", "<leader><up>", ":wincmd j<cr>", { desc = "Move up", silent = true })
-vim.keymap.set("n", "<leader><down>", ":wincmd k<cr>", { desc = "Move down", silent = true })
 
-return M
+vim.api.nvim_del_keymap("n", "gx")
+vim.api.nvim_del_keymap("x", "gx")

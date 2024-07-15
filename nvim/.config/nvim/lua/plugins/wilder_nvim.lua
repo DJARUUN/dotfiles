@@ -19,10 +19,12 @@ return {
 		wilder.set_option(
 			"renderer",
 			wilder.popupmenu_renderer(wilder.popupmenu_border_theme({
-				max_height = "30%",
 				highlights = {
 					border = "FloatBorder",
 				},
+				left = { " ", wilder.popupmenu_devicons() },
+				right = { " " },
+				max_height = "30%",
 				border = "rounded",
 			}))
 		)
