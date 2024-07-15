@@ -2,6 +2,10 @@
 
 #### My personal neovim configuration
 
+![splash image](https://gitlab.com/uploads/-/system/user/20335233/2a2ea251f68037b43f399df034394a8e/Skärmbild_2024-07-15_151815.png)
+
+---
+
 ### How did we get here?
 
 As many, I started with Neovim using different distros like NVChad, LazyVim, etc.
@@ -11,6 +15,8 @@ That's why I decided to start from scratch and create my own configuration based
 This gave Neovim a whole new feeling for me when everything I had was chosen and configured by me.
 
 That is how this config was born.
+
+---
 
 ### Main points
 
