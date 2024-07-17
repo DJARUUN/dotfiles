@@ -87,6 +87,9 @@ symbol = " "
 [ocaml]
 symbol = " "
 
+[gleam]
+symbol = "󰦥 "
+
 [os.symbols]
 Alpaquita = " "
 Alpine = " "
