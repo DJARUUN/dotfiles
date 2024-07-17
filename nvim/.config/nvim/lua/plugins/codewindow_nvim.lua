@@ -4,7 +4,7 @@ return {
 		local codewindow = require("codewindow")
 		codewindow.setup({
 			auto_enable = true,
-			exclude_filetypes = { "oil", "starter", "help" },
+			exclude_filetypes = { "oil", "starter", "help", "ministarter" },
 			window_border = "none",
 			show_cursor = false,
 			screen_bounds = "background",
