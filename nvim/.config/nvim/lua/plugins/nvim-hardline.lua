@@ -2,7 +2,7 @@ return {
 	"ojroques/nvim-hardline",
 	config = function()
 		require("hardline").setup({
-			bufferline = true,
+			bufferline = false,
 			bufferline_settings = {},
 			sections = {
 				"[",
@@ -24,11 +24,13 @@ return {
 
 		vim.api.nvim_create_autocmd("VimEnter", {
 			callback = function()
-				vim.cmd([[highlight clear Hardline_bufferline_background_modified]])
 				vim.cmd([[highlight clear Hardline_bufferline_current_modified]])
-				vim.cmd([[highlight clear Hardline_bufferline_background]])
 				vim.cmd([[highlight clear Hardline_bufferline_separator]])
 				vim.cmd([[highlight clear Hardline_bufferline_current]])
+				-- vim.cmd([[highlight Hardline_bufferline_background_modified guifg=#707a8c guibg=#232933]])
+				-- vim.cmd([[highlight Hardline_bufferline_background guifg=#707a8c guibg=#232933]])
+				vim.cmd([[highlight clear Hardline_bufferline_background_modified]])
+				vim.cmd([[highlight clear Hardline_bufferline_background]])
 
 				vim.cmd([[highlight clear Hardline_warning_inactive]])
 				vim.cmd([[highlight clear Hardline_warning_active]])
