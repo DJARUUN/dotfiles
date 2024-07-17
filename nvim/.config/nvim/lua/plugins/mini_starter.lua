@@ -9,7 +9,7 @@ local function polite_generator()
 		day_part = "afternoon"
 	elseif hour >= 18 and hour < 21 then
 		day_part = "evening"
-	elseif hour >= 21 and hour < 6 then
+	elseif hour >= 21 then
 		day_part = "night"
 	end
 
