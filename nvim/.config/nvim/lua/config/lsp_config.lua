@@ -121,3 +121,5 @@ lspconfig.templ.setup({})
 lspconfig.htmx.setup({
 	filetypes = { "html", "templ" },
 })
+
+lspconfig.ocamllsp.setup({})
