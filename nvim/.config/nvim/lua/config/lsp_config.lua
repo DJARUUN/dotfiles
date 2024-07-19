@@ -4,6 +4,11 @@ require("mason-lspconfig").setup({})
 local lspconfig = require("lspconfig")
 local root_pattern = lspconfig.util.root_pattern
 
+-- disable mason autorunning a lsp by adding it to the table
+require("mason-lspconfig").setup_handlers({
+	["rubocop"] = function() end,
+})
+
 lspconfig.gopls.setup({
 	cmd = { "gopls" },
 	filetypes = { "go", "gomod", "gowork", "gotmpl" },
@@ -34,7 +39,7 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 lspconfig.html.setup({
 	capabilities = capabilities,
-	filetypes = { "html", "blade", "php", "twig", "matcha" },
+	filetypes = { "html", "blade", "php", "twig", "matcha", "eruby" },
 })
 
 lspconfig.svelte.setup({
@@ -123,3 +128,16 @@ lspconfig.htmx.setup({
 })
 
 lspconfig.ocamllsp.setup({})
+
+lspconfig.solargraph.setup({
+	cmd = { "solargraph", "stdio" },
+	filetypes = { "ruby" },
+	init_options = {
+		formatting = true,
+	},
+	settings = {
+		solargraph = {
+			diagnostics = false,
+		},
+	},
+})
