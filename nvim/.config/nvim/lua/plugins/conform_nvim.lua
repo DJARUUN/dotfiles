@@ -19,6 +19,13 @@ return {
 			lua = { "stylua" },
 			ocaml = { "ocamlformat" },
 		},
+		formatters = {
+			ocamlformat = {
+				env = {
+					OCAMLFORMAT = "profile=default",
+				},
+			},
+		},
 	},
 	init = function()
 		vim.o.formatexpr = [[v:lua.require("conform").formatexpr()]]

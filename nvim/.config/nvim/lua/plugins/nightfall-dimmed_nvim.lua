@@ -1,5 +1,5 @@
 return {
-	"https://gitlab.com/djaruun/nightfall-dimmed.nvim",
+	"https://gitlab.com/djaruun/nightfall-dimmed.nvim.git",
 	lazy = false,
 	priority = 1000,
 	config = function()

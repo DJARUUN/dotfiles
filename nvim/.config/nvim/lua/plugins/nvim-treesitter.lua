@@ -12,15 +12,23 @@ return {
 		textobjects = {
 			select = {
 				enable = true,
-
 				lookahead = true,
-
 				keymaps = {
 					["af"] = "@function.outer",
 					["if"] = "@function.inner",
 					["ac"] = "@class.outer",
-					["ic"] = { query = "@class.inner", desc = "Select inner part of a class region" },
-					["as"] = { query = "@scope", query_group = "locals", desc = "Select language scope" },
+					["ic"] = "@class.inner",
+					["ab"] = "@block.outer",
+					["ib"] = "@block.inner",
+					["ai"] = "@conditional.outer",
+					["ii"] = "@conditional.inner",
+					["al"] = "@loop.outer",
+					["il"] = "@loop.inner",
+					["ap"] = "@parameter.outer",
+					["ip"] = "@parameter.inner",
+					["at"] = "@tag.outer",
+					["it"] = "@tag.inner",
+					["as"] = "@scope",
 				},
 				selection_modes = {
 					["@parameter.outer"] = "v", -- charwise
@@ -82,27 +90,7 @@ return {
 		"nvim-treesitter/nvim-treesitter-textobjects",
 	},
 	config = function(_, opts)
-		-- Fix laravel php blade
-		local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
-		---@diagnostic disable-next-line: inject-field
-		parser_config.blade = {
-			install_info = {
-				url = "https://github.com/EmranMR/tree-sitter-blade",
-				files = { "src/parser.c" },
-				branch = "main",
-			},
-			filetype = "blade",
-		}
-
-		vim.cmd([[
-				augroup BladeFiltypeRelated
-					autocmd!
-					autocmd BufNewFile,BufRead *.blade.php set ft=blade
-				augroup END
-			]])
-
 		require("nvim-treesitter.install").prefer_git = true
-		---@diagnostic disable-next-line: missing-fields
 		require("nvim-treesitter.configs").setup(opts)
 	end,
 }

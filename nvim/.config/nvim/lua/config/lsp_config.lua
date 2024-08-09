@@ -4,11 +4,6 @@ require("mason-lspconfig").setup({})
 local lspconfig = require("lspconfig")
 local root_pattern = lspconfig.util.root_pattern
 
--- disable mason autorunning a lsp by adding it to the table
-require("mason-lspconfig").setup_handlers({
-	["rubocop"] = function() end,
-})
-
 lspconfig.gopls.setup({
 	cmd = { "gopls" },
 	filetypes = { "go", "gomod", "gowork", "gotmpl" },
@@ -52,10 +47,17 @@ lspconfig.zls.setup({
 })
 
 lspconfig.elixirls.setup({
-	cmd = { "/home/caarg/.local/share/nvim/mason/packages/elixir-ls/language_server.sh" },
-	filetypes = { "elixir", "eelixir", "heex", "surface" },
-	single_file_support = true,
-	root_dir = root_pattern(".git", "mix.exs", "gleam.toml", "rebar.config"),
+	settings = {
+		elixirLS = {
+			autoBuild = true,
+			dialyzerEnabled = true,
+			incrementalDialyzer = true,
+			fetchDeps = true,
+			suggestSpecs = true,
+			signatureAfterComplete = true,
+			enableTestLenses = true,
+		},
+	},
 })
 
 lspconfig.emmet_language_server.setup({
@@ -94,6 +96,7 @@ lspconfig.bashls.setup({
 })
 
 -- lspconfig.tailwindcss.setup({
+-- 	root_dir = root_pattern(".git"),
 -- 	filetypes = {
 -- 		"html",
 -- 		"svelte",
@@ -140,4 +143,8 @@ lspconfig.solargraph.setup({
 			diagnostics = false,
 		},
 	},
+})
+
+require("mason-lspconfig").setup_handlers({
+	["rubocop"] = function() end,
 })
