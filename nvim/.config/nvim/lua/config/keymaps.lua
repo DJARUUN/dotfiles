@@ -31,8 +31,6 @@ map("t", "<esc><esc>", function()
 	vim.api.nvim_command("stopinsert")
 end)
 
-map("n", "<leader>-", ":Oil<CR>", { desc = "Open Oil" })
-
 map("n", "<tab>", ":bnext<CR>", { desc = "Next buffer" })
 map("n", "<s-tab>", ":bprevious<CR>", { desc = "Previous buffer" })
 
