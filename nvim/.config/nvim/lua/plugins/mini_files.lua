@@ -13,9 +13,9 @@ return {
 
 			mappings = {
 				close = "<esc>",
-				go_in = "<right>",
-				go_in_plus = "<s-right>",
-				go_out = "<left>",
+				go_in = "<s-right>",
+				go_in_plus = "<right>",
+				go_out = "<s-left>",
 				go_out_plus = "<left>",
 				reset = "<BS>",
 				reveal_cwd = "@",

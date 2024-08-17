@@ -30,20 +30,9 @@ lspconfig.gleam.setup({
 
 lspconfig.tsserver.setup({})
 
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities.textDocument.completion.completionItem.snippetSupport = true
-lspconfig.html.setup({
-	capabilities = capabilities,
-	filetypes = { "html", "blade", "php", "twig", "matcha", "eruby" },
-})
-
 lspconfig.svelte.setup({
 	filetypes = { "svelte" },
 	root_dir = root_pattern("svelte.config.js"),
-})
-
-lspconfig.zls.setup({
-	root_dir = root_pattern("src"),
 })
 
 lspconfig.elixirls.setup({
@@ -83,18 +72,6 @@ lspconfig.emmet_language_server.setup({
 	},
 })
 
-lspconfig.bashls.setup({
-	cmd = { "bash-language-server", "start" },
-	filetypes = { "sh" },
-	root_dir = root_pattern(".git", "*.sh"),
-	settings = {
-		bashIde = {
-			globPattern = "*@(.sh|.inc|.bash|.command)",
-		},
-	},
-	single_file_support = true,
-})
-
 -- lspconfig.tailwindcss.setup({
 -- 	root_dir = root_pattern(".git"),
 -- 	filetypes = {
@@ -124,25 +101,8 @@ lspconfig.bashls.setup({
 -- 	},
 -- })
 
-lspconfig.templ.setup({})
-
 lspconfig.htmx.setup({
 	filetypes = { "html", "templ" },
-})
-
-lspconfig.ocamllsp.setup({})
-
-lspconfig.solargraph.setup({
-	cmd = { "solargraph", "stdio" },
-	filetypes = { "ruby" },
-	init_options = {
-		formatting = true,
-	},
-	settings = {
-		solargraph = {
-			diagnostics = false,
-		},
-	},
 })
 
 require("mason-lspconfig").setup_handlers({
