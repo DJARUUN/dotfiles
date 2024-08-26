@@ -1,7 +1,0 @@
-require("config.vim_options")
-require("config.lazy")
-require("config.cmds")
-require("config.lsp_config")
-require("config.keymaps")
-require("config.hl_groups")
-require("luasnip.loaders.from_lua").load({ paths = { "./lua/config/snippets" } })
