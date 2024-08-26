@@ -2,7 +2,7 @@
 
 #### My personal neovim configuration
 
-![splash image](https://gitlab.com/uploads/-/system/user/20335233/2a2ea251f68037b43f399df034394a8e/Skärmbild_2024-07-15_151815.png)
+![splash image](https://utfs.io/f/10f8d954-7735-44b4-a71b-bfd1428809e3-qqhp3j.png)
 
 ---
 
