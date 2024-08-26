@@ -5,3 +5,5 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 		vim.highlight.on_yank({ higroup = "IncSearch" })
 	end,
 })
+
+vim.api.nvim_create_autocmd({ "VimEnter", "ColorScheme" }, { command = "lua Fix_italics()" })
