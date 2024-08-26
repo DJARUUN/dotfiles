@@ -7,9 +7,9 @@ return {
 				number = "none",
 				float = "none",
 				error = "none",
-				comments = "none",
+				comments = "italic",
 				conditionals = "none",
-				functions = "none",
+				functions = "italic",
 				headings = "bold",
 				operators = "none",
 				strings = "none",
@@ -60,6 +60,24 @@ return {
 		vim.cmd([[highlight! LspReferenceWrite guibg=#363738 guifg=none]])
 		vim.cmd([[highlight! LineNr guifg=#7a7c95]])
 		vim.cmd([[highlight! LineNrAbove guifg=#646477]])
-		vim.cmd([[highlight! LineNrBelow guifg=#646477]])
+		vim.cmd([[highlight! italicLineNrBelow guifg=#646477]])
+
+		local function update_hl(group, tbl)
+			local old_hl = vim.api.nvim_get_hl_by_name(group, true)
+			local new_hl = vim.tbl_extend("force", old_hl, tbl)
+			vim.api.nvim_set_hl(0, group, new_hl)
+		end
+
+		update_hl("@function.call", { italic = true })
+		update_hl("@function.method.call", { italic = true })
+		update_hl("Function", { italic = true })
+		update_hl("@type", { italic = true })
+		update_hl("@type.builtin", { italic = true })
+		update_hl("StorageClass", { italic = true })
+		update_hl("@constructor.lua", { italic = false })
+		update_hl("@label", { italic = true })
+		update_hl("@keyword", { italic = true })
+		update_hl("Keyword", { italic = true })
+		update_hl("@keyword.import", { italic = true })
 	end,
 }
