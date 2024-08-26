@@ -33,3 +33,10 @@ map("n", "<leader>S", ':lua require("mini.starter").open()<cr>', { desc = "Open 
 
 unmap("n", "gx")
 unmap("x", "gx")
+
+map("n", "]g", function()
+	vim.diagnostic.jump({ count = 1, float = true })
+end)
+map("n", "[g", function()
+	vim.diagnostic.jump({ count = -1, float = true })
+end)
