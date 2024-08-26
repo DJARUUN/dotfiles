@@ -36,7 +36,7 @@ return {
 				map("K", vim.lsp.buf.hover, "Hover Documentation")
 				map("gD", vim.lsp.buf.declaration, "Goto Declaration")
 
-				local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
+				local signs = { Error = "X ", Warn = "! ", Hint = "? ", Info = "i " }
 				for type, icon in pairs(signs) do
 					local hl = "DiagnosticSign" .. type
 					vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
@@ -93,6 +93,12 @@ return {
 					require("lspconfig")[server_name].setup(server)
 				end,
 			},
+		})
+
+		vim.diagnostic.config({
+			virtual_text = false,
+			signs = true,
+			underline = true,
 		})
 	end,
 }
