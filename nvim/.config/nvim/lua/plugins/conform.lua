@@ -18,6 +18,7 @@ return {
 		formatters_by_ft = {
 			lua = { "stylua" },
 			ocaml = { "ocamlformat" },
+			python = { "black" },
 		},
 		formatters = {
 			ocamlformat = {

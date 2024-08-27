@@ -31,6 +31,11 @@ return {
 		luasnip.config.setup({})
 
 		cmp.setup({
+			performance = {
+				debounce = 0,
+				throttle = 0,
+			},
+
 			window = {
 				completion = {
 					scrollbar = false,

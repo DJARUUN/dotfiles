@@ -61,6 +61,7 @@ return {
 		vim.cmd([[highlight! LineNr guifg=#7a7c95]])
 		vim.cmd([[highlight! LineNrAbove guifg=#646477]])
 		vim.cmd([[highlight! italicLineNrBelow guifg=#646477]])
+		vim.cmd([[highlight! link @lsp.type.variable.python function.method.call.python]])
 
 		local function update_hl(group, tbl)
 			local old_hl = vim.api.nvim_get_hl_by_name(group, true)

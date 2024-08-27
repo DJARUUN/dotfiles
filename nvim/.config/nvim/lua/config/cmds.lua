@@ -5,3 +5,4 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 		vim.highlight.on_yank({ higroup = "IncSearch" })
 	end,
 })
+vim.cmd([[highlight! link @lsp.type.variable.python function.method.call.python]])
