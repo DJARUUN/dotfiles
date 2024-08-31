@@ -11,7 +11,7 @@ return {
 		{
 			"-",
 			mode = "n",
-			":Yazi<cr>",
+			":e .<cr>",
 			desc = "Open Yazi",
 		},
 		{
