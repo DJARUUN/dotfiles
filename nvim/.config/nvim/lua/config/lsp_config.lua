@@ -32,7 +32,7 @@ lspconfig.tsserver.setup({})
 
 lspconfig.svelte.setup({
 	filetypes = { "svelte" },
-	root_dir = root_pattern("svelte.config.js"),
+	root_dir = root_pattern("svelte.config.js", "mix.exs", ".git"),
 })
 
 lspconfig.elixirls.setup({
@@ -113,4 +113,18 @@ lspconfig.asm_lsp.setup({
 	cmd = { "asm-lsp" },
 	filetypes = { "asm", "vmasm" },
 	root_dir = root_pattern(".git", "*.s", "*.asm"),
+})
+
+lspconfig.solargraph.setup({
+	cmd = { "solargraph", "stdio" },
+	filetypes = { "ruby" },
+	init_options = {
+		formatting = true,
+	},
+	root_dir = root_pattern("Gemfile", ".git"),
+	settings = {
+		solargraph = {
+			diagnostics = true,
+		},
+	},
 })
