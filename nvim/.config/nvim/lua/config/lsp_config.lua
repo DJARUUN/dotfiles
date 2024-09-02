@@ -128,3 +128,18 @@ lspconfig.solargraph.setup({
 		},
 	},
 })
+
+lspconfig.basedpyright.setup({
+	cmd = { "basedpyright-langserver", "--stdio" },
+	filetypes = {"python"},
+	settings = {
+		basedpyright = {
+			analysis = {
+				autoSearchPaths = true,
+				diagnosticMode = "openFilesOnly",
+				useLibraryCodeForTypes = true
+			}
+		}
+	},
+	single_file_support = true,
+})
