@@ -36,7 +36,7 @@ return {
 				map("K", vim.lsp.buf.hover, "Hover Documentation")
 				map("gD", vim.lsp.buf.declaration, "Goto Declaration")
 
-				local signs = { Error = "X ", Warn = "! ", Hint = "? ", Info = "i " }
+				local signs = { Error = " X", Warn = " !", Hint = " ?", Info = " i" }
 				for type, icon in pairs(signs) do
 					local hl = "DiagnosticSign" .. type
 					vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
@@ -103,15 +103,15 @@ return {
 
 		local capabilities = vim.lsp.protocol.make_client_capabilities()
 		capabilities.textDocument.foldingRange = {
-				dynamicRegistration = false,
-				lineFoldingOnly = true
+			dynamicRegistration = false,
+			lineFoldingOnly = true,
 		}
 		local language_servers = require("lspconfig").util.available_servers() -- or list servers manually like {'gopls', 'clangd'}
 		for _, ls in ipairs(language_servers) do
-				require('lspconfig')[ls].setup({
-						capabilities = capabilities
-						-- you can add other fields for setting up lsp server in this table
-				})
+			require("lspconfig")[ls].setup({
+				capabilities = capabilities,
+				-- you can add other fields for setting up lsp server in this table
+			})
 		end
 		require("ufo").setup()
 	end,

@@ -28,7 +28,7 @@ lspconfig.gleam.setup({
 	root_dir = root_pattern("gleam.toml", ".git", "mix.exs"),
 })
 
-lspconfig.tsserver.setup({})
+lspconfig.ts_ls.setup({})
 
 lspconfig.svelte.setup({
 	filetypes = { "svelte" },
@@ -101,10 +101,10 @@ lspconfig.emmet_language_server.setup({
 -- 	},
 -- })
 
-lspconfig.htmx.setup({
-	filetypes = { "html", "templ" },
-})
-
+-- lspconfig.htmx.setup({
+-- 	filetypes = { "html", "templ" },
+-- })
+--
 require("mason-lspconfig").setup_handlers({
 	["rubocop"] = function() end,
 })
@@ -131,15 +131,15 @@ lspconfig.solargraph.setup({
 
 lspconfig.basedpyright.setup({
 	cmd = { "basedpyright-langserver", "--stdio" },
-	filetypes = {"python"},
+	filetypes = { "python" },
 	settings = {
 		basedpyright = {
 			analysis = {
 				autoSearchPaths = true,
 				diagnosticMode = "openFilesOnly",
-				useLibraryCodeForTypes = true
-			}
-		}
+				useLibraryCodeForTypes = true,
+			},
+		},
 	},
 	single_file_support = true,
 })
