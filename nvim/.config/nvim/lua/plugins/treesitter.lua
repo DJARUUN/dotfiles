@@ -92,5 +92,14 @@ return {
 	config = function(_, opts)
 		require("nvim-treesitter.install").prefer_git = true
 		require("nvim-treesitter.configs").setup(opts)
+
+		local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
+		parser_config.bliss = {
+			install_info = {
+				url = "~/p/haskell/bliss/treesitter",
+				files = { "src/parser.c" },
+			},
+			filetype = "bliss",
+		}
 	end,
 }

@@ -5,4 +5,17 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 		vim.highlight.on_yank({ higroup = "IncSearch" })
 	end,
 })
+
 vim.cmd([[highlight! link @lsp.type.variable.python function.method.call.python]])
+
+vim.api.nvim_create_user_command("Daily", function(args)
+	local today = os.date("%Y-%m-%d")
+	vim.cmd([[e ~/notes/]] .. today .. [[.md]])
+end, { desc = "Open daily note", nargs = "*" })
+
+vim.cmd([[
+	augroup HaskellFileType
+		autocmd!
+		autocmd FileType haskell set expandtab
+	augroup END
+]])

@@ -143,3 +143,7 @@ lspconfig.basedpyright.setup({
 	},
 	single_file_support = true,
 })
+
+lspconfig.zls.setup({})
+
+lspconfig.hls.setup({})
