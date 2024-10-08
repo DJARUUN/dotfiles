@@ -30,7 +30,7 @@ return {
 					grouped = true,
 					prompt_path = true,
 					dir_icon = "󰉋",
-					dir_icon_hl = "MiniIconsAzure",
+					dir_icon_hl = "MiniIconsCyan",
 				},
 			},
 
