@@ -22,14 +22,74 @@ return {
 				["ui-select"] = {
 					require("telescope.themes").get_dropdown(),
 				},
+
+				file_browser = {
+					display_stat = { date = true, size = true, mode = false },
+					hijack_netrw = true,
+					follow_symlinks = true,
+					hide_parent_dir = true,
+					respect_gitignore = false,
+					grouped = true,
+					prompt_path = true,
+					dir_icon = "󰉋",
+					dir_icon_hl = "MiniIconsAzure",
+				},
 			},
+
 			defaults = {
+				layout_config = {
+					horizontal = { width = 0.95 },
+					vertical = { width = 0.95 },
+				},
+
+				borderchars = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
+
+				preview = {
+					mime_hook = function(filepath, bufnr, _)
+						local term = vim.api.nvim_open_term(bufnr, {})
+
+						local function send_output(_, data, _, header)
+							vim.api.nvim_chan_send(term, header)
+							for _, d in ipairs(data) do
+								vim.api.nvim_chan_send(term, d .. "\r\n")
+							end
+						end
+
+						if vim.tbl_contains(vim.split(filepath:lower(), ".", { plain = true }), "tar") then
+							vim.fn.jobstart({ "tar", "--exclude", "*/*", "-tvf", filepath }, {
+								on_stdout = function(_, data, _)
+									send_output(_, data, _, "----- Tar Archive Contents -----\r\n\r\n")
+								end,
+								stdout_buffered = true,
+								pty = true,
+							})
+						elseif vim.tbl_contains(vim.split(filepath:lower(), ".", { plain = true }), "zip") then
+							vim.fn.jobstart({ "zipinfo", "-z", filepath, "-x", "*/*" }, {
+								on_stdout = function(_, data, _)
+									send_output(_, data, _, "----- Zip Archive Contents -----\r\n\r\n")
+								end,
+								stdout_buffered = true,
+								pty = true,
+							})
+						else
+							vim.fn.jobstart({ "file", "-bpz", filepath }, {
+								on_stdout = function(_, data, _)
+									send_output(_, data, _, "----- File Type Classification -----\r\n\r\n")
+								end,
+								stdout_buffered = true,
+								pty = true,
+							})
+						end
+					end,
+				},
 				mappings = {
 					n = {
 						["x"] = require("telescope.actions").delete_buffer,
+						["?"] = require("telescope.actions").which_key,
 					},
 					i = {
 						["<M-x>"] = require("telescope.actions").delete_buffer,
+						["<M-?>"] = require("telescope.actions").which_key,
 					},
 				},
 			},
@@ -80,5 +140,7 @@ return {
 		vim.keymap.set("n", "<leader>sN", function()
 			builtin.find_files({ cwd = vim.fn.expand("~/notes") })
 		end, { desc = "Search notes" })
+
+		require("telescope").load_extension("file_browser")
 	end,
 }

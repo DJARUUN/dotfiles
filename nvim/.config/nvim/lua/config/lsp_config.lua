@@ -28,7 +28,7 @@ lspconfig.gleam.setup({
 	root_dir = root_pattern("gleam.toml", ".git", "mix.exs"),
 })
 
-lspconfig.ts_ls.setup({})
+-- lspconfig.ts_ls.setup({})
 
 lspconfig.svelte.setup({
 	filetypes = { "svelte" },

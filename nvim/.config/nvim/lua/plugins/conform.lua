@@ -19,6 +19,7 @@ return {
 			lua = { "stylua" },
 			ocaml = { "ocamlformat" },
 			python = { "black" },
+			fennel = { "fnlfmt" },
 		},
 		formatters = {
 			ocamlformat = {

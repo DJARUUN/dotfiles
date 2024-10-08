@@ -44,5 +44,4 @@ end)
 map("n", "<C-S-Left>", ":vertical resize +5<CR>", { silent = true })
 map("n", "<C-S-Right>", ":vertical resize -5<CR>", { silent = true })
 
-map("n", "-", ":Explore %:p:h<CR>", { silent = true })
-map("n", "<Leader>-", ":Explore <CR>", { silent = true })
+map({ "n", "v" }, "<c-e>", "<c-u>")
