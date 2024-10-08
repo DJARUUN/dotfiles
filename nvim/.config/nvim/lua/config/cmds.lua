@@ -19,3 +19,5 @@ vim.cmd([[
 		autocmd FileType haskell set expandtab
 	augroup END
 ]])
+
+vim.cmd([[hi! link TreesitterContext StatusLine]])

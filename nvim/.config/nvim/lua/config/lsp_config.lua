@@ -20,7 +20,7 @@ if package.config:sub(1, 1) == "/" then
 	})
 else
 	lspconfig.intelephense.setup({
-		root_dir = root_pattern(".git"),
+		root_dir = root_pattern("*"),
 	})
 end
 
@@ -51,15 +51,13 @@ lspconfig.elixirls.setup({
 
 lspconfig.emmet_language_server.setup({
 	filetypes = {
-		"css",
 		"eruby",
 		"html",
 		"htmldjango",
+		"javascript",
 		"javascriptreact",
 		"less",
 		"pug",
-		"sass",
-		"scss",
 		"typescriptreact",
 		"svelte",
 		"typescript",
@@ -69,37 +67,38 @@ lspconfig.emmet_language_server.setup({
 		"templ",
 		"eelixir",
 		"heex",
+		"php",
 	},
 })
 
--- lspconfig.tailwindcss.setup({
--- 	root_dir = root_pattern(".git"),
--- 	filetypes = {
--- 		"html",
--- 		"svelte",
--- 		"php",
--- 		"twig",
--- 	},
--- 	settings = {
--- 		tailwindCSS = {
--- 			lint = {
--- 				cssConflict = "warning",
--- 				invalidApply = "error",
--- 				invalidConfigPath = "error",
--- 				invalidScreen = "error",
--- 				invalidTailwindDirective = "error",
--- 				invalidVariant = "error",
--- 				recommendedVariantOrder = "warning",
--- 			},
--- 			validate = true,
--- 			experimental = {
--- 				classRegex = {
--- 					'class[:]\\s*"([^"]*)"',
--- 				},
--- 			},
--- 		},
--- 	},
--- })
+lspconfig.tailwindcss.setup({
+	root_dir = root_pattern(".git"),
+	filetypes = {
+		"html",
+		"svelte",
+		"php",
+		"twig",
+	},
+	settings = {
+		tailwindCSS = {
+			lint = {
+				cssConflict = "warning",
+				invalidApply = "error",
+				invalidConfigPath = "error",
+				invalidScreen = "error",
+				invalidTailwindDirective = "error",
+				invalidVariant = "error",
+				recommendedVariantOrder = "warning",
+			},
+			validate = true,
+			experimental = {
+				classRegex = {
+					'class[:]\\s*"([^"]*)"',
+				},
+			},
+		},
+	},
+})
 
 -- lspconfig.htmx.setup({
 -- 	filetypes = { "html", "templ" },

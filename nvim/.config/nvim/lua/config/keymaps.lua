@@ -40,3 +40,9 @@ end)
 map("n", "[g", function()
 	vim.diagnostic.jump({ count = -1, float = true })
 end)
+
+map("n", "<C-S-Left>", ":vertical resize +5<CR>", { silent = true })
+map("n", "<C-S-Right>", ":vertical resize -5<CR>", { silent = true })
+
+map("n", "-", ":Explore %:p:h<CR>", { silent = true })
+map("n", "<Leader>-", ":Explore <CR>", { silent = true })
