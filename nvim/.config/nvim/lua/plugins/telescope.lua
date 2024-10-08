@@ -6,9 +6,7 @@ return {
 		"nvim-lua/plenary.nvim",
 		{
 			"nvim-telescope/telescope-fzf-native.nvim",
-
 			build = "make",
-
 			cond = function()
 				return vim.fn.executable("make") == 1
 			end,
@@ -38,11 +36,20 @@ return {
 
 			defaults = {
 				layout_config = {
+					prompt_position = "top",
 					horizontal = { width = 0.95 },
 					vertical = { width = 0.95 },
 				},
 
+				sorting_strategy = "ascending",
+				file_ignore_patterns = { ".git/[^h]" },
 				borderchars = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
+
+				pickers = {
+					find_files = {
+						hidden = true,
+					},
+				},
 
 				preview = {
 					mime_hook = function(filepath, bufnr, _)
