@@ -78,6 +78,7 @@ lspconfig.tailwindcss.setup({
 		"svelte",
 		"php",
 		"twig",
+		"typescriptreact",
 	},
 	settings = {
 		tailwindCSS = {
