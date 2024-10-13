@@ -24,7 +24,7 @@ return {
 		formatters = {
 			ocamlformat = {
 				env = {
-					OCAMLFORMAT = "profile=default,let-binding-spacing=double-semicolon,type-decl=sparse,module-item-spacing=preserve,break-infix=fit-or-vertical",
+					OCAMLFORMAT = "profile=default,type-decl=sparse,module-item-spacing=preserve,break-infix=fit-or-vertical",
 				},
 			},
 		},
