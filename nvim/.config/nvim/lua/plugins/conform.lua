@@ -15,11 +15,13 @@ return {
 	opts = {
 		notify_on_error = false,
 		format_on_save = { timeout_ms = 500, lsp_format = "fallback" },
+		stop_after_first = true,
 		formatters_by_ft = {
 			lua = { "stylua" },
 			ocaml = { "ocamlformat" },
 			python = { "black" },
 			fennel = { "fnlfmt" },
+			php = { "pint", "php_cs_fixer" },
 		},
 		formatters = {
 			ocamlformat = {
@@ -27,6 +29,14 @@ return {
 					OCAMLFORMAT = "profile=default,type-decl=sparse,module-item-spacing=preserve,break-infix=fit-or-vertical",
 				},
 			},
+			-- php = {
+			-- 	command = "php-cs-fixer",
+			-- 	args = {
+			-- 		"fix",
+			-- 		"$FILENAME",
+			-- 	},
+			-- 	stdin = false,
+			-- },
 		},
 	},
 	init = function()

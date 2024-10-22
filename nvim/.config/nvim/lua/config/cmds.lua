@@ -21,3 +21,9 @@ vim.cmd([[
 ]])
 
 vim.cmd([[hi! link TreesitterContext StatusLine]])
+
+vim.filetype.add({
+	pattern = {
+		[".*%.blade%.php"] = "blade",
+	},
+})

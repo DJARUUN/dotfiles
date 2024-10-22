@@ -2,6 +2,7 @@ require("mason").setup()
 require("mason-lspconfig").setup({})
 
 local lspconfig = require("lspconfig")
+local configs = require("lspconfig.configs")
 local root_pattern = lspconfig.util.root_pattern
 
 lspconfig.gopls.setup({
@@ -11,18 +12,15 @@ lspconfig.gopls.setup({
 	single_file_support = true,
 })
 
-if package.config:sub(1, 1) == "/" then
-	lspconfig.phpactor.setup({
-		root_dir = root_pattern("*"),
-		on_attach = function(_)
-			vim.cmd([[autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync(nil, 1000)]])
-		end,
-	})
-else
-	lspconfig.intelephense.setup({
-		root_dir = root_pattern("*"),
-	})
-end
+-- if package.config:sub(1, 1) == "/" then
+lspconfig.phpactor.setup({
+	filetypes = { "php", "blade" },
+})
+-- else
+-- 	lspconfig.intelephense.setup({
+-- 		root_dir = root_pattern("*"),
+-- 	})
+-- end
 
 lspconfig.gleam.setup({
 	root_dir = root_pattern("gleam.toml", ".git", "mix.exs"),
