@@ -21,7 +21,7 @@ return {
 			ocaml = { "ocamlformat" },
 			python = { "black" },
 			fennel = { "fnlfmt" },
-			php = { "pint", "php_cs_fixer" },
+			php = { "pretty-php" },
 		},
 		formatters = {
 			ocamlformat = {

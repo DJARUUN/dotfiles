@@ -3,7 +3,21 @@ require("mason-lspconfig").setup({})
 
 local lspconfig = require("lspconfig")
 local configs = require("lspconfig.configs")
-local root_pattern = lspconfig.util.root_pattern
+local util = lspconfig.util
+local root_pattern = util.root_pattern
+
+if not configs.c3_lsp then
+	configs.c3_lsp = {
+		default_config = {
+			cmd = { "c3lsp" },
+			filetypes = { "c3", "c3i" },
+			root_dir = root_pattern(".git", "project.json", "*.c3"),
+			settings = {},
+			name = "c3_lsp",
+		},
+	}
+end
+lspconfig.c3_lsp.setup({})
 
 lspconfig.gopls.setup({
 	cmd = { "gopls" },
@@ -12,21 +26,19 @@ lspconfig.gopls.setup({
 	single_file_support = true,
 })
 
--- if package.config:sub(1, 1) == "/" then
-lspconfig.phpactor.setup({
-	filetypes = { "php", "blade" },
-})
--- else
--- 	lspconfig.intelephense.setup({
--- 		root_dir = root_pattern("*"),
--- 	})
--- end
+if package.config:sub(1, 1) == "/" then
+	lspconfig.phpactor.setup({
+		filetypes = { "php", "blade" },
+	})
+else
+	lspconfig.intelephense.setup({
+		root_dir = root_pattern("*"),
+	})
+end
 
 lspconfig.gleam.setup({
 	root_dir = root_pattern("gleam.toml", ".git", "mix.exs"),
 })
-
--- lspconfig.ts_ls.setup({})
 
 lspconfig.svelte.setup({
 	filetypes = { "svelte" },
@@ -99,10 +111,13 @@ lspconfig.tailwindcss.setup({
 	},
 })
 
--- lspconfig.htmx.setup({
--- 	filetypes = { "html", "templ" },
--- })
---
+lspconfig.html.setup({
+	filetypes = {
+		"html",
+		"blade",
+	},
+})
+
 require("mason-lspconfig").setup_handlers({
 	["rubocop"] = function() end,
 })

@@ -8,7 +8,7 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 
 vim.cmd([[highlight! link @lsp.type.variable.python function.method.call.python]])
 
-vim.api.nvim_create_user_command("Daily", function(args)
+vim.api.nvim_create_user_command("Daily", function(_)
 	local today = os.date("%Y-%m-%d")
 	vim.cmd([[e ~/notes/]] .. today .. [[.md]])
 end, { desc = "Open daily note", nargs = "*" })
@@ -25,5 +25,13 @@ vim.cmd([[hi! link TreesitterContext StatusLine]])
 vim.filetype.add({
 	pattern = {
 		[".*%.blade%.php"] = "blade",
+	},
+})
+
+vim.filetype.add({
+	extension = {
+		c3 = "c3",
+		c3i = "c3",
+		c3t = "c3",
 	},
 })
