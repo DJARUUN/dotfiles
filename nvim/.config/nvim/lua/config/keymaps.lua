@@ -10,7 +10,7 @@ map("t", "<esc><esc>", function()
 	vim.api.nvim_command("stopinsert")
 end)
 
-map("n", "<leader>X", ":bw!<CR>", { desc = "Wipeout current buffer", silent = true })
+map("n", "<leader>X", "<C-w>q", { desc = "Wipeout current buffer", silent = true })
 
 map("n", "<tab>", ":bnext<CR>", { desc = "Next buffer", silent = true })
 map("n", "<s-tab>", ":bprevious<CR>", { desc = "Previous buffer", silent = true })
