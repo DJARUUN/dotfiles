@@ -29,6 +29,10 @@ return {
 				python = { "black" },
 				fennel = { "fnlfmt" },
 				php = { "pretty-php" },
+				javascript = { "prettier", "ts_ls" },
+				typescript = { "prettier", "ts_ls" },
+				javascriptreact = { "prettier", "ts_ls" },
+				typescriptreact = { "prettier", "ts_ls" },
 			},
 			formatters = {
 				ocamlformat = {
