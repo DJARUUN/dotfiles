@@ -114,7 +114,6 @@ lspconfig.tailwindcss.setup({
 lspconfig.html.setup({
 	filetypes = {
 		"html",
-		"blade",
 	},
 })
 

@@ -33,6 +33,7 @@ return {
 				typescript = { "prettier", "ts_ls" },
 				javascriptreact = { "prettier", "ts_ls" },
 				typescriptreact = { "prettier", "ts_ls" },
+				blade = {"blade-formatter"},
 			},
 			formatters = {
 				ocamlformat = {
