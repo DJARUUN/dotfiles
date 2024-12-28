@@ -117,29 +117,39 @@ lspconfig.html.setup({
 	},
 })
 
-require("mason-lspconfig").setup_handlers({
-	["rubocop"] = function() end,
-})
-
 lspconfig.asm_lsp.setup({
 	cmd = { "asm-lsp" },
 	filetypes = { "asm", "vmasm" },
 	root_dir = root_pattern(".git", "*.s", "*.asm"),
 })
 
-lspconfig.solargraph.setup({
-	cmd = { "solargraph", "stdio" },
-	filetypes = { "ruby" },
-	init_options = {
-		formatting = true,
-	},
-	root_dir = root_pattern("Gemfile", ".git"),
-	settings = {
-		solargraph = {
-			diagnostics = true,
-		},
-	},
+-- lspconfig.solargraph.setup({
+-- 	cmd = { "solargraph", "stdio" },
+-- 	filetypes = { "ruby" },
+-- 	init_options = {
+-- 		formatting = true,
+-- 	},
+-- 	root_dir = root_pattern("Gemfile", ".git"),
+-- 	settings = {
+-- 		solargraph = {
+-- 			diagnostics = true,
+-- 		},
+-- 	},
+-- })
+
+lspconfig.ruby_lsp.setup({
+	cmd = { "ruby-lsp" },
+	filetypes = { "ruby", "eruby" },
+	single_file_support = true,
+	-- init_options = {
+	-- 	formatter = "rubyfmt",
+	-- },
 })
+
+-- lspconfig.rubocop.setup({
+-- 	cmd = { "rubocop", "--lsp" },
+-- 	filetypes = { "ruby" },
+-- })
 
 lspconfig.basedpyright.setup({
 	cmd = { "basedpyright-langserver", "--stdio" },

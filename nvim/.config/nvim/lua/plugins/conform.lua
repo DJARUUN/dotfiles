@@ -3,25 +3,38 @@ return {
 	event = { "BufWritePre" },
 	cmd = { "ConformInfo" },
 	keys = {
-		{
-			"<leader>f",
-			function()
-				require("conform").format({ async = true, lsp_fallback = true })
-			end,
-			mode = "",
-			desc = "Format buffer",
-		},
+		-- {
+		-- 	"<leader>f",
+		-- 	function()
+		-- 		require("conform").format({ async = true, lsp_fallback = true })
+		-- 	end,
+		-- 	mode = "",
+		-- 	desc = "Format buffer",
+		-- },
 	},
 	config = function()
 		require("conform").setup({
 			notify_on_error = false,
+
+			default_format_opts = {
+				lsp_format = "fallback",
+			},
+
 			format_on_save = function(bufnr)
 				-- Disable with a global or buffer-local variable
 				if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
 					return
 				end
-				return { timeout_ms = 1000, lsp_format = "fallback" }
+				return {
+					lsp_format = "fallback",
+					timeout_ms = 500,
+				}
 			end,
+
+			format_after_save = {
+				lsp_format = "fallback",
+			},
+
 			stop_after_first = true,
 			formatters_by_ft = {
 				lua = { "stylua" },
@@ -33,8 +46,10 @@ return {
 				typescript = { "prettier", "ts_ls" },
 				javascriptreact = { "prettier", "ts_ls" },
 				typescriptreact = { "prettier", "ts_ls" },
-				blade = {"blade-formatter"},
+				blade = { "blade-formatter" },
+				ruby = { "rubyfmt" },
 			},
+
 			formatters = {
 				ocamlformat = {
 					env = {
