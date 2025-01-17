@@ -1,105 +1,88 @@
 return {
-	{
-		"saghen/blink.cmp",
-		lazy = false,
-		version = "v0.*",
-		dependencies = {
-			{
-				"rafamadriz/friendly-snippets",
-				config = function()
-					require("luasnip.loaders.from_vscode").lazy_load()
-				end,
+	"saghen/blink.cmp",
+	lazy = false,
+	version = "v0.*",
+	dependencies = {
+		{ "rafamadriz/friendly-snippets" }, { "L3MON4D3/LuaSnip", version = "v2.*" },
+	},
+
+	opts = {
+		keymap = {
+			["<Up>"] = {},
+			["<Down>"] = {},
+			["<Tab>"] = { "select_next", "fallback" },
+			["<S-Tab>"] = { "select_prev", "fallback" },
+			["<CR>"] = { "accept", "fallback" },
+			["<C-space>"] = { "show", "show_documentation", "hide_documentation" },
+		},
+
+		appearance = {
+			use_nvim_cmp_as_default = true,
+			nerd_font_variant = "mono",
+		},
+
+		snippets = {
+			expand = function(snippet)
+				require("luasnip").lsp_expand(snippet)
+			end,
+			active = function(filter)
+				if filter and filter.direction then
+					return require("luasnip").jumpable(filter.direction)
+				end
+				return require("luasnip").in_snippet()
+			end,
+			jump = function(direction)
+				require("luasnip").jump(direction)
+			end,
+		},
+
+		completion = {
+			trigger = {
+				show_on_accept_on_trigger_character = false,
+				show_on_insert_on_trigger_character = false,
 			},
-			{
-				"L3MON4D3/LuaSnip",
-				version = "v2.*",
+
+			menu = {
+				scrollbar = false,
+				-- treesitter = { "lsp" },
+
+				draw = {
+					columns = { { "label", "label_description", gap = 1 }, { "kind_icon", "kind", gap = 1 } },
+					components = {
+						kind_icon = {
+							ellipsis = false,
+							text = function(ctx)
+								local kind_icon, _, _ = require("mini.icons").get("lsp", ctx.kind)
+								return kind_icon
+							end,
+							-- Optionally, you may also use the highlights from mini.icons
+							highlight = function(ctx)
+								local _, hl, _ = require("mini.icons").get("lsp", ctx.kind)
+								return hl
+							end,
+						},
+					},
+				},
+			},
+
+			documentation = {
+				auto_show = true,
+				auto_show_delay_ms = 0,
+				update_delay_ms = 0,
+				treesitter_highlighting = true,
 			},
 		},
 
-		config = function()
-			local luasnip = require("luasnip")
-			luasnip.config.setup({})
+		signature = {
+			enabled = true,
+		},
 
-			---@module 'blink.cmp'
-			---@type blink.cmp.Config
-			require("blink-cmp").setup({
-				keymap = {
-					["<Up>"] = {},
-					["<Down>"] = {},
-					["<Tab>"] = { "select_next", "fallback" },
-					["<S-Tab>"] = { "select_prev", "fallback" },
-					["<CR>"] = { "accept", "fallback" },
-					["<C-space>"] = { "show", "show_documentation", "hide_documentation" },
-				},
+    snippets = { preset = 'luasnip' },
 
-				appearance = {
-					use_nvim_cmp_as_default = true,
-					nerd_font_variant = "mono",
-				},
-
-				snippets = {
-					expand = function(snippet)
-						require("luasnip").lsp_expand(snippet)
-					end,
-					active = function(filter)
-						if filter and filter.direction then
-							return require("luasnip").jumpable(filter.direction)
-						end
-						return require("luasnip").in_snippet()
-					end,
-					jump = function(direction)
-						require("luasnip").jump(direction)
-					end,
-				},
-
-				completion = {
-					trigger = {
-						show_on_accept_on_trigger_character = false,
-						show_on_insert_on_trigger_character = false,
-					},
-
-					menu = {
-						scrollbar = false,
-						-- treesitter = { "lsp" },
-
-						draw = {
-							columns = { { "label", "label_description", gap = 1 }, { "kind_icon", "kind", gap = 1 } },
-							components = {
-								kind_icon = {
-									ellipsis = false,
-									text = function(ctx)
-										local kind_icon, _, _ = require("mini.icons").get("lsp", ctx.kind)
-										return kind_icon
-									end,
-									-- Optionally, you may also use the highlights from mini.icons
-									highlight = function(ctx)
-										local _, hl, _ = require("mini.icons").get("lsp", ctx.kind)
-										return hl
-									end,
-								},
-							},
-						},
-					},
-
-					documentation = {
-						auto_show = true,
-						auto_show_delay_ms = 0,
-						update_delay_ms = 0,
-						treesitter_highlighting = true,
-					},
-				},
-
-				signature = {
-					enabled = true,
-				},
-
-				sources = {
-					default = { "lsp", "path", "luasnip", "buffer" },
-					cmdline = {},
-				},
-			})
-		end,
-
-		opts_extend = { "sources.default" },
+		sources = {
+			default = { "lsp", "path", "snippets", "buffer" },
+			cmdline = {},
+		},
 	},
+	opts_extend = { "sources.default" },
 }

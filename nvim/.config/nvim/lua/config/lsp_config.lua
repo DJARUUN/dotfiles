@@ -1,5 +1,5 @@
 require("mason").setup()
-require("mason-lspconfig").setup({})
+require("mason-lspconfig").setup({ ensure_installed = {}, automatic_installation = false })
 
 local lspconfig = require("lspconfig")
 local configs = require("lspconfig.configs")
@@ -24,6 +24,18 @@ lspconfig.gopls.setup({
 	filetypes = { "go", "gomod", "gowork", "gotmpl" },
 	root_dir = root_pattern("go.work", "go.mod", ".git"),
 	single_file_support = true,
+	settings = {
+		gopls = {
+			gofumpt = true,
+			semanticTokens = true,
+			staticcheck = true,
+			noSemanticString = true,
+			-- hints = {
+			-- 	compositeLiteralFields = true,
+			-- 	parameterNames = true,
+			-- },
+		}
+	}
 })
 
 if package.config:sub(1, 1) == "/" then
@@ -89,6 +101,7 @@ lspconfig.tailwindcss.setup({
 		"php",
 		"twig",
 		"typescriptreact",
+		"eruby",
 	},
 	settings = {
 		tailwindCSS = {
@@ -169,3 +182,30 @@ lspconfig.basedpyright.setup({
 lspconfig.zls.setup({})
 
 lspconfig.hls.setup({})
+
+lspconfig.vuels.setup({
+	settings = {
+		vetur = {
+				completion = {
+						autoImport = true,
+						useScaffoldSnippets = true
+				},
+				format = {
+						defaultFormatter = {
+								js = "prettier",
+								ts = "prettier",
+						}
+				},
+				validation = {
+						template = true,
+						script = true,
+						style = true,
+						templateProps = true,
+						interpolation = true
+				},
+				experimental = {
+						templateInterpolationService = true
+				}
+		}
+	},
+})
