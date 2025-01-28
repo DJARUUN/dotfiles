@@ -8,12 +8,14 @@ return {
 
 	opts = {
 		keymap = {
+			preset = "none",
+
 			["<Up>"] = {},
 			["<Down>"] = {},
 			["<Tab>"] = { "select_next", "fallback" },
 			["<S-Tab>"] = { "select_prev", "fallback" },
 			["<CR>"] = { "accept", "fallback" },
-			["<C-space>"] = { "show", "show_documentation", "hide_documentation" },
+			["<C-space>"] = { "show" },
 		},
 
 		appearance = {
