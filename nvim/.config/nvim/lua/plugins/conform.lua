@@ -3,14 +3,6 @@ return {
 	event = { "BufWritePre" },
 	cmd = { "ConformInfo" },
 	keys = {
-		-- {
-		-- 	"<leader>f",
-		-- 	function()
-		-- 		require("conform").format({ async = true, lsp_fallback = true })
-		-- 	end,
-		-- 	mode = "",
-		-- 	desc = "Format buffer",
-		-- },
 	},
 	config = function()
 		require("conform").setup({
@@ -42,10 +34,6 @@ return {
 				python = { "black" },
 				fennel = { "fnlfmt" },
 				php = { "pretty-php" },
-				javascript = { "prettier", "ts_ls" },
-				typescript = { "prettier", "ts_ls" },
-				javascriptreact = { "prettier", "ts_ls" },
-				typescriptreact = { "prettier", "ts_ls" },
 				blade = { "blade-formatter" },
 				ruby = { "rubyfmt" },
 			},

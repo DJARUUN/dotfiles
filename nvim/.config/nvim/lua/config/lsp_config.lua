@@ -183,29 +183,13 @@ lspconfig.zls.setup({})
 
 lspconfig.hls.setup({})
 
-lspconfig.vuels.setup({
+lspconfig.volar.setup({
+	filetypes = { 'vue', 'typescript', 'javascript', 'typescriptreact', 'javascriptreact' },
 	settings = {
-		vetur = {
-				completion = {
-						autoImport = true,
-						useScaffoldSnippets = true
-				},
-				format = {
-						defaultFormatter = {
-								js = "prettier",
-								ts = "prettier",
-						}
-				},
-				validation = {
-						template = true,
-						script = true,
-						style = true,
-						templateProps = true,
-						interpolation = true
-				},
-				experimental = {
-						templateInterpolationService = true
-				}
-		}
+		vue = {
+			autoInsert = {
+				dotValue = true,
+			},
+		},
 	},
 })
