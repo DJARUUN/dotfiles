@@ -93,10 +93,16 @@ return {
 					n = {
 						["x"] = require("telescope.actions").delete_buffer,
 						["?"] = require("telescope.actions").which_key,
+
+						["<C-d>"] = require("telescope.actions").preview_scrolling_down,
+						["<C-e>"] = require("telescope.actions").preview_scrolling_up,
 					},
 					i = {
 						["<M-x>"] = require("telescope.actions").delete_buffer,
 						["<M-?>"] = require("telescope.actions").which_key,
+
+						["<C-d>"] = require("telescope.actions").preview_scrolling_down,
+						["<C-e>"] = require("telescope.actions").preview_scrolling_up,
 					},
 				},
 			},
