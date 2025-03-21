@@ -3,7 +3,8 @@ return {
 	lazy = false,
 	version = "v0.*",
 	dependencies = {
-		{ "rafamadriz/friendly-snippets" }, { "L3MON4D3/LuaSnip", version = "v2.*" },
+		{ "rafamadriz/friendly-snippets" },
+		{ "L3MON4D3/LuaSnip", version = "v2.*" },
 	},
 
 	opts = {
@@ -55,7 +56,7 @@ return {
 			documentation = {
 				auto_show = true,
 				auto_show_delay_ms = 0,
-				update_delay_ms = 0,
+				update_delay_ms = 50,
 				treesitter_highlighting = true,
 			},
 		},
@@ -64,7 +65,7 @@ return {
 			enabled = true,
 		},
 
-		snippets = { preset = 'luasnip' },
+		snippets = { preset = "luasnip" },
 
 		cmdline = {
 			sources = {},
