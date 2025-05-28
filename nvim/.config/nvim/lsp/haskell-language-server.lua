@@ -7,5 +7,5 @@ return {
 			formattingProvider = "ormolu",
 			cabalFormattingProvider = "cabalfmt",
 		},
-  },
+	},
 }

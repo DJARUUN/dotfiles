@@ -32,7 +32,7 @@ return {
 					builtin_functions = "none",
 					builtin_types = "none",
 					builtin_variables = "none",
-				}
+				},
 			})
 
 			vim.cmd.colorscheme("vague")
@@ -49,5 +49,5 @@ return {
 			update_hl("Keyword", { italic = true })
 			update_hl("@keyword.import", { italic = true })
 		end,
-	}
+	},
 }
