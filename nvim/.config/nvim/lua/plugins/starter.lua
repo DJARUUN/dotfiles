@@ -22,7 +22,7 @@ local Headers = {
 		polite_generator(),
 	},
 
-	camel = {
+	caml = {
 		[[              ,,__                               ]],
 		[[    ..  ..   / o._)                   .---.      ]],
 		[[   /--'/--\  \-'||        .----.    .'     '.    ]],
@@ -40,6 +40,6 @@ return {
 	"echasnovski/mini.starter",
 	opts = {
 		query_updaters = "abcdefghijklmnopqrstuvwxyz0123456789_.",
-		header = vim.fn.join(Headers.camel, "\n"),
+		header = vim.fn.join(Headers.caml, "\n"),
 	},
 }
