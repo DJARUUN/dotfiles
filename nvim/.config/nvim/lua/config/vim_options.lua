@@ -40,3 +40,4 @@ vim.g.loaded_ruby_provider = 0
 vim.g.loaded_python_provider = 0
 vim.o.linebreak = true
 vim.g.netrw_winsize = 30
+vim.o.winborder = "rounded"
