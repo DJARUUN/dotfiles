@@ -12,27 +12,11 @@ local function find_lazygit_buf()
 	return nil
 end
 
-local function cleanup_lazygit_buffers()
-	local lazygit_bufnr = find_lazygit_buf()
-	if lazygit_bufnr then
-		-- force kill the terminal job
-		local job_id = vim.bo[lazygit_bufnr].channel
-
-		if job_id and job_id > 0 then
-			vim.fn.jobstop(job_id)
-		end
-
-		-- force delete the buffer
-		vim.api.nvim_buf_delete(lazygit_bufnr, { force = true })
-	end
-end
-
-local function toggle_lazygit_hidden()
+local function toggle_lazygit_buffer()
 	local lazygit_bufnr = find_lazygit_buf()
 	local current_bufnr = vim.api.nvim_get_current_buf()
 
-	-- currently in the lazygit buffer
-	-- toggle back to the previous buffer
+	-- currently in the lazygit buffer, toggle back to the previous buffer
 	if lazygit_bufnr and lazygit_bufnr == current_bufnr then
 		if state.last_bufnr and vim.api.nvim_buf_is_valid(state.last_bufnr) then
 			vim.api.nvim_set_current_buf(state.last_bufnr)
@@ -40,8 +24,7 @@ local function toggle_lazygit_hidden()
 			-- fallback to the first buffer if we lost our previous buffer since opening the lazygit buffer
 			vim.cmd.buffer(vim.api.nvim_list_bufs()[1])
 		end
-	-- in a regular buffer
-	-- toggle to the lazygit buffer
+	-- in a regular buffer, toggle to the lazygit buffer
 	else
 		state.last_bufnr = current_bufnr
 
@@ -54,17 +37,11 @@ local function toggle_lazygit_hidden()
 			vim.cmd("term lazygit")
 			local new_bufnr = vim.api.nvim_get_current_buf()
 
-			-- mark the buffer as unlisted
-			-- will make it be ignored by most bufferline plugins etc
+			-- mark the buffer as unlisted, will make it ignored by most bufferline plugins etc
 			vim.bo[new_bufnr].buflisted = false
 			vim.cmd("startinsert")
 		end
 	end
 end
 
-vim.keymap.set({ "n", "i", "t" }, "<C-g>", toggle_lazygit_hidden, { silent = true, desc = "Toggle Lazygit" })
-
-vim.api.nvim_create_autocmd("VimLeavePre", {
-	callback = cleanup_lazygit_buffers,
-	desc = "Cleanup hidden lazygit buffers before exit",
-})
+vim.keymap.set({ "n", "i", "t" }, "<C-g>", toggle_lazygit_buffer, { silent = true, desc = "Toggle Lazygit" })
