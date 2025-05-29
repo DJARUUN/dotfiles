@@ -8,7 +8,7 @@ for _, file in ipairs(vim.fn.globpath(lsp_dir, "*.lua", false, true)) do
 	if f then
 		f:close()
 	end
-	-- Only include the file if it doesn"t start with "-- disable"
+	-- Only include the file if it doesn't start with "-- disable"
 	if not first_line:match("^%-%- disable") then
 		local name = vim.fn.fnamemodify(file, ":t:r") -- `:t` gets filename, `:r` removes extension
 		table.insert(lsp_files, name)
