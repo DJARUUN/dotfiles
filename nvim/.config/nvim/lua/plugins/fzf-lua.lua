@@ -1,6 +1,7 @@
 return {
 	"ibhagwan/fzf-lua",
 	dependencies = { "echasnovski/mini.icons" },
+	cmd = { "FzfLua" },
 	keys = {
 		{
 			"<leader>sf",
