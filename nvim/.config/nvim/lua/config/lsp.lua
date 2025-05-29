@@ -17,8 +17,6 @@ end
 
 vim.lsp.enable(lsp_files)
 
-print("Registered and enabled LSPs: " .. table.concat(lsp_files, ", "))
-
 -- utils for working with the clients
 
 -- vim.api.nvim_create_user_command("LspInfo")
