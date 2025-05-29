@@ -12,6 +12,21 @@ local function find_lazygit_buf()
 	return nil
 end
 
+local function cleanup_lazygit_buffers()
+	local lazygit_bufnr = find_lazygit_buf()
+	if lazygit_bufnr then
+		-- force kill the terminal job
+		local job_id = vim.bo[lazygit_bufnr].channel
+
+		if job_id and job_id > 0 then
+			vim.fn.jobstop(job_id)
+		end
+
+		-- force delete the buffer
+		vim.api.nvim_buf_delete(lazygit_bufnr, { force = true })
+	end
+end
+
 local function toggle_lazygit_hidden()
 	local lazygit_bufnr = find_lazygit_buf()
 	local current_bufnr = vim.api.nvim_get_current_buf()
@@ -33,7 +48,6 @@ local function toggle_lazygit_hidden()
 		-- if we have one switch to it
 		if lazygit_bufnr then
 			vim.api.nvim_set_current_buf(lazygit_bufnr)
-
 			vim.cmd("startinsert")
 		-- if not create one
 		else
@@ -43,27 +57,14 @@ local function toggle_lazygit_hidden()
 			-- mark the buffer as unlisted
 			-- will make it be ignored by most bufferline plugins etc
 			vim.bo[new_bufnr].buflisted = false
-
 			vim.cmd("startinsert")
 		end
 	end
 end
 
--- force close the lazygit buffer to let the user quit without it having issues with running jobs
-
-local lazygit_term_group = vim.api.nvim_create_augroup("LazygitTermCleanup", { clear = true })
+vim.keymap.set({ "n", "i", "t" }, "<C-g>", toggle_lazygit_hidden, { silent = true, desc = "Toggle Lazygit" })
 
 vim.api.nvim_create_autocmd("VimLeavePre", {
-	group = lazygit_term_group,
-	pattern = "*", -- run for any buffer when quitting
-	callback = function()
-		local lazygit_bufnr = find_lazygit_buf()
-		if lazygit_bufnr then
-			-- forcefully delete the buffer to kill the running job
-			vim.api.nvim_buf_delete(lazygit_bufnr, { force = true })
-		end
-	end,
-	desc = "Kill the lazygit terminal before quitting Vim.",
+	callback = cleanup_lazygit_buffers,
+	desc = "Cleanup hidden lazygit buffers before exit",
 })
-
-vim.keymap.set("n", "<leader>gg", toggle_lazygit_hidden, { silent = true, desc = "Toggle Lazygit" })
