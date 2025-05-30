@@ -5,37 +5,43 @@ local function update_hl(group, tbl)
 end
 
 return {
+	-- {
+	-- 	"djaruun/vague.nvim",
+	-- 	config = function()
+	-- 		require("vague").setup({
+	-- 			style = {
+	-- 				boolean = "none",
+	-- 				number = "none",
+	-- 				float = "none",
+	-- 				error = "none",
+	-- 				comments = "italic",
+	-- 				conditionals = "none",
+	-- 				functions = "none",
+	-- 				headings = "bold",
+	-- 				operators = "none",
+	-- 				strings = "none",
+	-- 				variables = "none",
+	--
+	-- 				keywords = "none",
+	-- 				keyword_return = "none",
+	-- 				keywords_loop = "none",
+	-- 				keywords_label = "none",
+	-- 				keywords_exception = "none",
+	--
+	-- 				builtin_constants = "none",
+	-- 				builtin_functions = "none",
+	-- 				builtin_types = "none",
+	-- 				builtin_variables = "none",
+	-- 			},
+	-- 		})
+	--
+	-- 	end,
+	-- },
 	{
-		"djaruun/vague.nvim",
+		"olimorris/onedarkpro.nvim",
+		priority = 1000,
 		config = function()
-			require("vague").setup({
-				style = {
-					boolean = "none",
-					number = "none",
-					float = "none",
-					error = "none",
-					comments = "italic",
-					conditionals = "none",
-					functions = "none",
-					headings = "bold",
-					operators = "none",
-					strings = "none",
-					variables = "none",
-
-					keywords = "none",
-					keyword_return = "none",
-					keywords_loop = "none",
-					keywords_label = "none",
-					keywords_exception = "none",
-
-					builtin_constants = "none",
-					builtin_functions = "none",
-					builtin_types = "none",
-					builtin_variables = "none",
-				},
-			})
-
-			vim.cmd.colorscheme("vague")
+			vim.cmd.colorscheme("onedark_dark")
 
 			update_hl("@function.call", { italic = true })
 			update_hl("@function.method.call", { italic = true })
