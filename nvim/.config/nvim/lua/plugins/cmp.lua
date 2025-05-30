@@ -5,6 +5,12 @@ return {
 	version = "1.*",
 	config = function()
 		require("blink.cmp").setup({
+			enabled = function()
+				return not (
+					vim.tbl_contains({ "minifiles", "ministarter" }, vim.bo.filetype)
+					or vim.tbl_contains({ "nofile" }, vim.bo.buftype)
+				)
+			end,
 			keymap = {
 				preset = "none",
 				["<Up>"] = {},
