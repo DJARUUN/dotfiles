@@ -7,5 +7,11 @@ return {
 			formattingProvider = "ormolu",
 			cabalFormattingProvider = "cabalfmt",
 		},
+		plugin = {
+			semanticTokens = {
+				config = {},
+				globalOn = true,
+			},
+		},
 	},
 }
