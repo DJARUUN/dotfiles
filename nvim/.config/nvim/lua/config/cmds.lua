@@ -12,3 +12,5 @@ vim.cmd([[
 		autocmd FileType haskell set expandtab
 	augroup END
 ]])
+
+vim.cmd([[highlight! link @markup.raw Normal]])

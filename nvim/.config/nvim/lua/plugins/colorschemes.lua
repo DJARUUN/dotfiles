@@ -46,6 +46,7 @@ return {
 			update_hl("@function.call", { italic = true })
 			update_hl("@function.method.call", { italic = true })
 			update_hl("Function", { italic = true })
+			update_hl("@function", { italic = true })
 			update_hl("@type", { italic = true })
 			update_hl("@type.builtin", { italic = true })
 			update_hl("StorageClass", { italic = true })
