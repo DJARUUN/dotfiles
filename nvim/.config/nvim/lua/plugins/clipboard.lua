@@ -1,6 +1,5 @@
 return {
-	"https://gitlab.com/djaruun/clipboard.nvim.git",
-	-- dir = "~/p/nvim/clipboard.nvim",
+	"djaruun/clipboard.nvim",
 	event = "VeryLazy",
 	opts = {},
 	keys = {
