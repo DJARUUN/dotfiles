@@ -29,7 +29,7 @@ end)
 map("n", "<tab>", ":bnext<CR>", { desc = "Next buffer", silent = true })
 map("n", "<s-tab>", ":bprevious<CR>", { desc = "Previous buffer", silent = true })
 
-map("n", "<leader>x", ":bd!<CR>", { desc = "Close current buffer", silent = true })
+map("n", "<leader>x", function () require("snacks").bufdelete.delete() end, { desc = "Close current buffer", silent = true })
 
 map("n", "<C-S-Left>", ":vertical resize +5<CR>", { silent = true })
 map("n", "<C-S-Right>", ":vertical resize -5<CR>", { silent = true })
