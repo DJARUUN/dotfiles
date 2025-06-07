@@ -62,7 +62,7 @@ return {
 				enabled = false,
 			},
 			sources = {
-				default = { "lsp", "path", "snippets", "buffer" },
+				default = { "snippets", "lsp", "path", "buffer" },
 			},
 			fuzzy = { implementation = "prefer_rust_with_warning" },
 		})

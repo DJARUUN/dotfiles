@@ -1,5 +1,14 @@
 return {
-	init_options = { hostInfo = "neovim" },
+	init_options = {
+		hostInfo = "neovim",
+		plugins = {
+			{
+				name = "@vue/typescript-plugin",
+				location = "/home/caarg/.bun/install/global/node_modules/@vue/typescript-plugin",
+				languages = { "javascript", "typescript", "vue" },
+			},
+		},
+	},
 	cmd = { "typescript-language-server", "--stdio" },
 	filetypes = {
 		"javascript",
@@ -8,6 +17,7 @@ return {
 		"typescript",
 		"typescriptreact",
 		"typescript.tsx",
+		"vue",
 	},
 	root_markers = { "tsconfig.json", "jsconfig.json", "package.json", ".git" },
 	handlers = {
