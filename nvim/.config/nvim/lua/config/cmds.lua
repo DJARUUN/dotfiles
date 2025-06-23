@@ -14,3 +14,9 @@ vim.cmd([[
 ]])
 
 vim.cmd([[highlight! link @markup.raw Normal]])
+
+vim.filetype.add({
+	extension = {
+		bliss = "clojure",
+	},
+})

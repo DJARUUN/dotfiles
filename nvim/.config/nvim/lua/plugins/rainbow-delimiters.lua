@@ -9,7 +9,6 @@ return {
 				"@function.builtin",
 				"MiniIconsCyan",
 				"MiniIconsRed",
-				"MiniIconsGrey",
 			},
 		})
 	end,

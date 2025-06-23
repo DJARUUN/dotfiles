@@ -12,17 +12,25 @@ local function find_lazygit_buf()
 	return nil
 end
 
-local function toggle_lazygit_buffer()
+local function toggle_lazygit_buf()
 	local lazygit_bufnr = find_lazygit_buf()
 	local current_bufnr = vim.api.nvim_get_current_buf()
 
 	-- currently in the lazygit buffer, toggle back to the previous buffer
 	if lazygit_bufnr and lazygit_bufnr == current_bufnr then
-		if state.last_bufnr and vim.api.nvim_buf_is_valid(state.last_bufnr) then
-			vim.api.nvim_set_current_buf(state.last_bufnr)
+		local buf_count = #vim.api.nvim_list_bufs()
+
+		-- default to starter if there are no other bufs
+		if buf_count == 1 then
+			require("mini.starter").open()
 		else
-			-- fallback to the first buffer if we lost our previous buffer since opening the lazygit buffer
-			vim.cmd.buffer(vim.api.nvim_list_bufs()[1])
+			if state.last_bufnr and vim.api.nvim_buf_is_valid(state.last_bufnr) then
+				vim.api.nvim_set_current_buf(state.last_bufnr)
+			else
+				-- fallback to the first buffer if we lost our previous buffer since opening the lazygit buffer
+				local first_bufnr = vim.api.nvim_list_bufs()[1]
+				vim.cmd.buffer(first_bufnr)
+			end
 		end
 	-- in a regular buffer, toggle to the lazygit buffer
 	else
@@ -44,4 +52,4 @@ local function toggle_lazygit_buffer()
 	end
 end
 
-vim.keymap.set({ "n", "i", "t" }, "<C-g>", toggle_lazygit_buffer, { silent = true, desc = "Toggle Lazygit" })
+vim.keymap.set({ "n", "i", "t" }, "<C-g>", toggle_lazygit_buf, { silent = true, desc = "Toggle Lazygit" })
