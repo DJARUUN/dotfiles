@@ -6,7 +6,6 @@ return {
 				"MiniIconsYellow",
 				"MiniIconsPurple",
 				"MiniIconsGreen",
-				"@function.builtin",
 				"MiniIconsCyan",
 				"MiniIconsRed",
 			},
